@@ -9,6 +9,15 @@
   },
   "tags": [
     {
+      "id": "qp",
+      "label": "Quickest Path",
+      "terms": [
+        "quickest path",
+        "quickest paths",
+        "quickest-path"
+      ]
+    },
+    {
       "id": "agent",
       "label": "Agent",
       "terms": [
@@ -310,5 +319,67 @@
     "demand",
     "quickest",
     "stochastic"
+  ],
+  "topics": [
+    {
+      "id": "qp",
+      "label": "Quickest Path（快速路徑）",
+      "queries": [
+        "quickest path",
+        "quickest path reliability",
+        "quickest path multi-state flow network",
+        "quickest path stochastic flow network",
+        "quickest path problem algorithm",
+        "quickest paths network"
+      ],
+      "title_pattern": "quickest[\\s-]*paths?",
+      "exclude": [
+        "white blood cells",
+        "physics education",
+        "descending from a to b",
+        "quickest path to the goal"
+      ],
+      "groups": [
+        {
+          "id": "reliability",
+          "label": "隨機流網路 QP 可靠度",
+          "terms": [
+            "reliab",
+            "stochastic",
+            "multi-state",
+            "multistate",
+            "flow network",
+            "probabilistic",
+            "monte carlo",
+            "uncertain"
+          ]
+        },
+        {
+          "id": "application",
+          "label": "應用（通訊、交通、救災等）",
+          "terms": [
+            "pedestrian",
+            "traffic",
+            "service level",
+            "sla",
+            "emergency",
+            "taxi",
+            "crowdsens",
+            "packet",
+            "internet",
+            "communication",
+            "router",
+            "urban",
+            "green",
+            "energy"
+          ]
+        },
+        {
+          "id": "algorithm",
+          "label": "QP 演算法與變形",
+          "terms": []
+        }
+      ]
+    }
   ]
 }

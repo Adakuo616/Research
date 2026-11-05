@@ -330,7 +330,7 @@ def crossref_scholar_works(sc, terms):
             key = title.lower()
             if key not in works or it.get("is-referenced-by-count", 0) > works[key]["cites"]:
                 works[key] = {"year": year, "date": date_of(it, "issued"), "title": title,
-                              "authors": ", ".join(authors), "venue": " ".join(it.get("container-title") or []) or "—",
+                              "authors": ", ".join(authors), "venue": html.unescape(" ".join(it.get("container-title") or [])) or "—",
                               "cites": it.get("is-referenced-by-count") or 0,
                               "doi": "https://doi.org/" + it["DOI"].lower()}
         if len(items) < 200:
@@ -381,6 +381,51 @@ def fetch_scholars(cfg, prev, today):
     return result
 
 
+def fetch_topics(cfg, prev, today):
+    """Topic libraries: every Crossref work whose title matches the topic pattern."""
+    out = {}
+    for tp in cfg.get("topics", []):
+        before = prev.get(tp["id"]) or {}
+        old = {w["doi"]: w for w in before.get("items", [])}
+        pat = re.compile(tp["title_pattern"], re.I)
+        excl = [x.lower() for x in tp.get("exclude", [])]
+        found = {}
+        for q in tp["queries"]:
+            for offset in (0, 200):
+                url = (f"https://api.crossref.org/works?rows=200&offset={offset}&query.bibliographic={urllib.parse.quote(q)}"
+                       f"&select=DOI,title,author,container-title,issued,is-referenced-by-count,type")
+                data = get_json(url)
+                time.sleep(1.1)
+                if not data:
+                    break
+                for it in data["message"]["items"]:
+                    title = html.unescape(re.sub(r"<[^>]+>", "", " ".join(it.get("title") or []))).strip()
+                    if not pat.search(title) or any(x in title.lower() for x in excl):
+                        continue
+                    year = ((it.get("issued") or {}).get("date-parts") or [[None]])[0][0]
+                    key = re.sub(r"[^a-z0-9]", "", title.lower())
+                    doi = it["DOI"].lower()
+                    cites = it.get("is-referenced-by-count") or 0
+                    if key in found and found[key]["cites"] >= cites:
+                        continue
+                    group = next((g["id"] for g in tp["groups"]
+                                  if not g["terms"] or any(t in title.lower() for t in g["terms"])), "")
+                    found[key] = {"doi": doi, "title": title, "year": year, "cites": cites,
+                                  "venue": html.unescape(" ".join(it.get("container-title") or [])) or "—",
+                                  "authors": short_authors(it, 5), "group": group}
+        if not found and before:
+            out[tp["id"]] = before
+            continue
+        baseline = not before
+        for w in found.values():
+            w["first_seen"] = old.get(w["doi"], {}).get("first_seen", "" if baseline else today)
+        items = sorted(found.values(), key=lambda w: -(w["year"] or 0))
+        out[tp["id"]] = {"label": tp["label"], "groups": [{"id": g["id"], "label": g["label"]} for g in tp["groups"]],
+                         "items": items}
+        log(f"topic {tp['id']}: {len(items)} works")
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-llm", action="store_true", help="skip Claude summaries")
@@ -420,6 +465,7 @@ def main():
         n_sum = summarize(feed, cfg)
 
     scholars = fetch_scholars(cfg, prev.get("scholars", {}), today)
+    topics = fetch_topics(cfg, prev.get("topics", {}), today)
 
     out = {
         "meta": {"updated": now.isoformat(timespec="minutes"), "since": since,
@@ -429,6 +475,7 @@ def main():
                     "scholars": [{"key": s["key"], "name": s["name"]} for s in cfg["scholars"]]},
         "feed": feed,
         "scholars": scholars,
+        "topics": topics,
     }
     with open(OUT_JSON, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
