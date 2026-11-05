@@ -12,6 +12,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONFIG = os.path.join(ROOT, "config", "sources.json")
 ISSN_RE = re.compile(r"^\d{4}-\d{3}[\dXx]$")
+ORCID_RE = re.compile(r"^\d{4}-\d{4}-\d{4}-\d{3}[\dXx]$")
 
 
 def parse_form(body):
@@ -24,7 +25,8 @@ def parse_form(body):
     def find(prefix):
         return next((v for k, v in fields.items() if k.startswith(prefix)), "")
     return {"kind": find("類型"), "keyword": find("關鍵字"), "tag": find("歸入"),
-            "journal": find("期刊名稱"), "issn": find("ISSN")}
+            "journal": find("期刊名稱"), "issn": find("ISSN"),
+            "scholar": find("學者顯示名稱"), "author": find("學者英文姓名"), "orcid": find("ORCID")}
 
 
 def slug(text, taken):
@@ -47,7 +49,29 @@ def main():
     form = parse_form(os.environ.get("ISSUE_BODY", ""))
     cfg = json.load(open(CONFIG, encoding="utf-8"))
 
-    if form["kind"] == "期刊":
+    if form["kind"] == "學者":
+        name, author = form["scholar"].strip(), form["author"].strip()
+        orcid = re.sub(r"^https?://orcid\.org/", "", form["orcid"].strip())
+        if not name or not author:
+            emit(False, "", "沒有加入：請填學者顯示名稱與英文姓名。")
+            return
+        if orcid and not ORCID_RE.match(orcid):
+            emit(False, "", f"沒有加入：ORCID 格式應為 0000-0000-0000-000X，收到「{orcid}」。")
+            return
+        for sc in cfg["scholars"]:
+            if (orcid and sc.get("orcid") == orcid) or sc.get("author", "").lower() == author.lower():
+                emit(False, "", f"「{sc['name']}」已在追蹤清單中，沒有重複加入。")
+                return
+        key = slug(author, {s["key"] for s in cfg["scholars"]})
+        entry = {"key": key, "name": name, "author": author}
+        if orcid:
+            entry["orcid"] = orcid
+        cfg["scholars"].append(entry)
+        summary = f"scholar {author}"
+        message = (f"已加入學者「{name}」（{author}{'，ORCID ' + orcid if orcid else ''}），正在重新抓取，"
+                   "幾分鐘後「學者研究脈絡」會出現這位學者的著作與主題分類。"
+                   + ("" if orcid else "沒有填 ORCID，會依英文姓名比對，可能混入同名作者的論文。"))
+    elif form["kind"] == "期刊":
         name = form["journal"].strip()
         issns = [x.strip().upper() for x in re.split(r"[,，\s]+", form["issn"]) if x.strip()]
         bad = [x for x in issns if not ISSN_RE.match(x)]

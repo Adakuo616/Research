@@ -13,7 +13,7 @@
 2. 用關鍵字標籤（agent、reliability、risk、simulation、pm、sfn）比對標題與摘要，只保留至少符合一個標籤的文章。
 3. Crossref 沒有摘要時（例如 Elsevier 期刊），改從 OpenAlex 補摘要。
 4. 若設定了 `ANTHROPIC_API_KEY`，用 Claude 為每篇寫一到兩句繁體中文重點與一句英文摘要。
-5. 從 OpenAlex 更新四位學者的引用數、h-index、i10-index 與近兩年新著作。
+5. 依 ORCID 或英文姓名從 Crossref 抓每位追蹤學者的完整著作清單（以主題關鍵字過濾同名雜訊）；引用數、h-index、i10-index 優先取 OpenAlex，取不到時改用 Crossref 引用數計算（通常低於 Google Scholar，頁面上會標示來源）。
 6. 結果寫入 `docs/data/radar.json` 與 `docs/data/radar-data.js`，由 workflow 自動 commit。
 
 ## 第一次設定（約 5 分鐘）
@@ -22,15 +22,15 @@
 2. **允許 workflow 寫入**：Settings → Actions → General → Workflow permissions 選 **Read and write permissions**。
 3. **建立標籤**：Issues → Labels → New label，名稱 `radar-source`（加入期刊或關鍵字的表單會用到）。
 4. **（選用）中文摘要**：Settings → Secrets and variables → Actions → New repository secret，名稱 `ANTHROPIC_API_KEY`。沒有設定時仍會每天更新，只是沒有中文摘要。
-5. **（選用）OpenAlex 金鑰**：若 Actions 紀錄常出現 HTTP 429，可到 OpenAlex 申請免費 API key，存成 secret `OPENALEX_API_KEY`。
+5. **（建議）OpenAlex 金鑰**：OpenAlex 的免費額度是依 IP 共用，GitHub Actions 很容易用完。到 openalex.org 申請免費 API key，存成 secret `OPENALEX_API_KEY`。沒有金鑰時學者指標會改用 Crossref 計算，文章摘要補抓也會略過。
 6. **跑第一次**：Actions → Daily radar update → Run workflow。
 
-## 加入期刊或關鍵字
+## 加入期刊、關鍵字或學者
 
 三種方式，擇一即可：
 
 - **網站上**：「每日更新」分頁右側的「加入每日追蹤」，填好後按「送到 GitHub 加入」，會開啟預先填好的 Issue，按 Submit 即可。workflow 會自動寫入設定、回覆並關閉 Issue，然後重新抓取。只有儲存庫擁有者送出的 Issue 會被處理。
-- **GitHub 上**：Issues → New issue → 選「新增追蹤期刊或關鍵字」。
+- **GitHub 上**：Issues → New issue → 選「新增追蹤期刊、關鍵字或學者」。學者需填顯示名稱與英文姓名，ORCID 選填（建議填，可避免同名誤判）。
 - **直接改設定檔**：編輯 `config/sources.json` 後 commit，workflow 會自動重新抓取。
 
 網站上的「我的關鍵字」只存在你的瀏覽器裡，用來立即標亮與篩選，不會改變每天抓取的範圍。

@@ -43,7 +43,14 @@ def openalex_url(url):
     return url + ("&" if "?" in url else "?") + "api_key=" + urllib.parse.quote(key) if key else url
 
 
+OPENALEX_EXHAUSTED = False
+
+
 def get_json(url, tries=5):
+    global OPENALEX_EXHAUSTED
+    is_oa = "api.openalex.org" in url
+    if is_oa and OPENALEX_EXHAUSTED:
+        return None
     for i in range(tries):
         wait = 2 ** i
         try:
@@ -55,9 +62,16 @@ def get_json(url, tries=5):
                 return None
             if e.code == 429:
                 try:
-                    wait = max(wait, min(60, int(e.headers.get("Retry-After", "5"))))
+                    retry_after = int(e.headers.get("Retry-After", "5"))
                 except ValueError:
-                    wait = max(wait, 5)
+                    retry_after = 5
+                if is_oa and retry_after > 120:
+                    # Free daily budget used up (resets at UTC midnight); a free key avoids this.
+                    OPENALEX_EXHAUSTED = True
+                    log("  OpenAlex daily budget used up: skipping OpenAlex for this run "
+                        "(add a free key as the OPENALEX_API_KEY secret)")
+                    return None
+                wait = max(wait, min(60, retry_after))
             log(f"  HTTP {e.code} for {url.split('?')[0]} (try {i + 1}, waiting {wait}s)")
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as e:
             log(f"  {type(e).__name__} for {url.split('?')[0]} (try {i + 1})")
@@ -152,7 +166,7 @@ def fetch_articles(cfg, since, today):
             })
             kept += 1
         log(f"{j['id']:7s} fetched {len(raw):4d}, kept {kept}")
-        time.sleep(0.4)
+        time.sleep(1.1)  # Crossref public pool: 1 request per second
     return out
 
 
@@ -281,45 +295,89 @@ def initials_name(display):
     return f"{given} {parts[-1]}"
 
 
+def norm_name(text):
+    return re.sub(r"[^a-z]", "", (text or "").lower())
+
+
+def crossref_scholar_works(sc, terms):
+    """All works where an author matches the scholar's ORCID or exact name."""
+    orcid = (sc.get("orcid") or "").strip()
+    target = norm_name(sc.get("author") or sc["name"])
+    q = urllib.parse.quote(sc.get("author") or sc["name"])
+    works = {}
+    for offset in (0, 200, 400, 600):
+        url = (f"https://api.crossref.org/works?rows=200&offset={offset}&query.author={q}"
+               f"&select=DOI,title,author,container-title,issued,is-referenced-by-count,type")
+        data = get_json(url)
+        time.sleep(1.1)
+        if not data:
+            break
+        items = data["message"]["items"]
+        for it in items:
+            if it.get("type") not in ("journal-article", "proceedings-article", "book-chapter", "posted-content"):
+                continue
+            match = any((orcid and orcid in (a.get("ORCID") or "")) or
+                        norm_name((a.get("given") or "") + (a.get("family") or "")) == target
+                        for a in it.get("author", []))
+            title = html.unescape(re.sub(r"<[^>]+>", "", " ".join(it.get("title") or []))).strip()
+            if not match or not title or (terms and not any(t in title.lower() for t in terms)):
+                continue
+            authors = []
+            for a in it.get("author", [])[:6]:
+                given = "".join(p[0].upper() for p in re.split(r"[-\s.]+", a.get("given") or "") if p)
+                authors.append(f"{given} {a.get('family', '')}".strip())
+            year = ((it.get("issued") or {}).get("date-parts") or [[None]])[0][0]
+            key = title.lower()
+            if key not in works or it.get("is-referenced-by-count", 0) > works[key]["cites"]:
+                works[key] = {"year": year, "date": date_of(it, "issued"), "title": title,
+                              "authors": ", ".join(authors), "venue": " ".join(it.get("container-title") or []) or "—",
+                              "cites": it.get("is-referenced-by-count") or 0,
+                              "doi": "https://doi.org/" + it["DOI"].lower()}
+        if len(items) < 200:
+            break
+    return works
+
+
+def openalex_stats(sc):
+    ids = list(sc.get("openalex") or [])
+    if not ids and sc.get("orcid"):
+        ids = [f"orcid:{sc['orcid']}"]
+    for aid in ids[:1]:
+        a = get_json(openalex_url(f"https://api.openalex.org/authors/{aid}"))
+        if a:
+            ss = a.get("summary_stats") or {}
+            return {"cites": a.get("cited_by_count"), "h": ss.get("h_index"), "i10": ss.get("i10_index"),
+                    "works": a.get("works_count"), "source": "OpenAlex"}
+    return None
+
+
+def crossref_stats(works):
+    c = sorted((w["cites"] for w in works.values()), reverse=True)
+    return {"cites": sum(c), "h": sum(1 for i, x in enumerate(c) if x >= i + 1),
+            "i10": sum(1 for x in c if x >= 10), "works": len(c), "source": "Crossref"}
+
+
 def fetch_scholars(cfg, prev, today):
+    """Publication lists from Crossref (ORCID or exact name, filtered by topic terms);
+    citation metrics from OpenAlex when available, otherwise computed from Crossref counts."""
     terms = [t.lower() for t in cfg.get("scholar_topic_terms", [])]
-    year_from = dt.date.today().year - 1
     result = {}
     for sc in cfg["scholars"]:
-        old = {w["title"].lower(): w for w in (prev.get(sc["key"], {}).get("works") or [])}
-        stats = None
-        works = {}
-        for aid in sc["openalex"]:
-            a = get_json(openalex_url(f"https://api.openalex.org/authors/{aid}"))
-            if a and stats is None:
-                ss = a.get("summary_stats") or {}
-                stats = {"cites": a.get("cited_by_count"), "h": ss.get("h_index"), "i10": ss.get("i10_index"),
-                         "works": a.get("works_count")}
-            url = (f"https://api.openalex.org/works?filter=author.id:{aid},from_publication_date:{year_from}-01-01"
-                   f"&sort=publication_date:desc&per-page=50"
-                   f"&select=doi,title,publication_year,publication_date,authorships,primary_location,cited_by_count")
-            data = get_json(openalex_url(url)) or {"results": []}
-            for w in data["results"]:
-                title = re.sub(r"<[^>]+>", "", w.get("title") or "").strip()
-                if not title or (terms and not any(t in title.lower() for t in terms)):
-                    continue
-                key = title.lower()
-                src = ((w.get("primary_location") or {}).get("source") or {}).get("display_name") or "—"
-                authors = ", ".join(initials_name(x["author"]["display_name"]) for x in w.get("authorships", [])[:6])
-                works[key] = {
-                    "year": w.get("publication_year"),
-                    "date": w.get("publication_date"),
-                    "title": title,
-                    "authors": authors,
-                    "venue": src,
-                    "cites": w.get("cited_by_count") or 0,
-                    "doi": w.get("doi"),
-                    "first_seen": old.get(key, {}).get("first_seen", today),
-                }
-            time.sleep(1.5)
-        result[sc["key"]] = {"name": sc["name"], "stats": stats or {},
+        before = prev.get(sc["key"]) or {}
+        old = {w["title"].lower(): w for w in (before.get("works") or [])}
+        works = crossref_scholar_works(sc, terms)
+        if not works and before:
+            log(f"scholar {sc['key']}: no works fetched, keeping previous data")
+            result[sc["key"]] = before
+            continue
+        # First time a scholar is tracked, its back catalogue is the baseline (not "new").
+        baseline = not before or "orcid" not in before  # new scholar, or data from the old format
+        for k, w in works.items():
+            w["first_seen"] = old[k].get("first_seen", "") if k in old else ("" if baseline else today)
+        stats = openalex_stats(sc) or crossref_stats(works)
+        result[sc["key"]] = {"name": sc["name"], "orcid": sc.get("orcid", ""), "stats": stats,
                              "works": sorted(works.values(), key=lambda x: x["date"] or "", reverse=True)}
-        log(f"scholar {sc['key']}: {len(works)} recent works, stats {stats}")
+        log(f"scholar {sc['key']}: {len(works)} works, stats {stats}")
     return result
 
 

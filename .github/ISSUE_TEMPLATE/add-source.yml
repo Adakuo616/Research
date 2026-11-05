@@ -1,4 +1,4 @@
-name: 新增追蹤期刊或關鍵字
+name: 新增追蹤期刊、關鍵字或學者
 description: 送出後會自動寫入 config/sources.json，並立即重新抓取一次。
 title: "新增追蹤："
 labels: ["radar-source"]
@@ -10,6 +10,7 @@ body:
       options:
         - 關鍵字
         - 期刊
+        - 學者
     validations:
       required: true
   - type: input
@@ -35,3 +36,18 @@ body:
       label: ISSN（類型選「期刊」時填）
       description: 可填印刷版或電子版，用逗號分隔多個。可在 portal.issn.org 或期刊官網查詢。
       placeholder: 1366-5545
+  - type: input
+    id: scholar
+    attributes:
+      label: 學者顯示名稱（類型選「學者」時填）
+      placeholder: 牛一峰 Yi-Feng Niu
+  - type: input
+    id: author
+    attributes:
+      label: 學者英文姓名（論文上的寫法）
+      placeholder: Yi-Feng Niu
+  - type: input
+    id: orcid
+    attributes:
+      label: ORCID（選填，可減少同名誤判）
+      placeholder: 0000-0002-7246-8089
