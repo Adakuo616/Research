@@ -506,6 +506,10 @@
   .ctx-jump a:hover{color:var(--accent);border-color:var(--accent);}
   .ctx-h{font-size:21px;font-weight:800;margin:30px 0 4px;scroll-margin-top:16px;}
   .ctx-lead{color:var(--text-2);font-size:13.5px;margin:0 0 16px;max-width:75ch;}
+  .l-dec{--lane:var(--amber);}
+  .lane.l-dec{background:var(--surface);border:1.5px solid var(--lane);color:var(--text);}
+  .tl-new{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;padding:1px 8px;border-radius:999px;background:var(--accent);color:var(--accent-ink);margin-right:6px;vertical-align:1px;}
+  table.mx.gap td.ck{text-align:center;font-weight:700;color:var(--accent);}
   .lane{display:inline-block;font-size:11.5px;padding:1px 9px;border-radius:999px;margin:0 4px;}
   .l-ana{--lane:#3f73b5;} .l-sim{--lane:var(--teal);} .l-agt{--lane:#c0399a;} .l-you{--lane:var(--accent);}
   .lane.l-ana,.lane.l-sim,.lane.l-agt,.lane.l-you{background:var(--surface);border:1.5px solid var(--lane);color:var(--text);}
@@ -747,24 +751,39 @@
     </div>
 
     <nav class="ctx-jump" aria-label="本頁段落">
-      <a href="#ctx-timeline">研究演進</a><a href="#ctx-algo">演算法詳解</a><a href="#ctx-matrix">你的研究定位</a><a href="#ctx-phd">博士生待補清單</a>
+      <a href="#ctx-timeline">研究演進</a><a href="#ctx-algo">演算法詳解</a><a href="#ctx-matrix">你的研究定位</a><a href="#ctx-gap">補漏檢查</a><a href="#ctx-phd">博士生待補清單</a>
     </nav>
 
     <h3 class="ctx-h" id="ctx-timeline">研究演進時間軸</h3>
-    <p class="ctx-lead">依年代排列。顏色代表研究支流：<span class="lane l-ana">解析可靠度</span><span class="lane l-sim">模擬估算</span><span class="lane l-agt">代理人與學習</span><span class="lane l-you">你的研究</span></p>
+    <p class="ctx-lead">依年代排列。顏色代表研究支流：<span class="lane l-ana">解析可靠度</span><span class="lane l-sim">模擬估算</span><span class="lane l-agt">代理人與學習</span><span class="lane l-dec">決策與供應鏈</span><span class="lane l-you">你的研究</span>。標示「補充」者為這次補進的文獻</p>
     <ol class="tl">
+      <li class="l-dec"><span class="tl-y">1964</span><div><span class="tl-new">補充</span><b>Pratt — 風險趨避的衡量（Econometrica）</b><p>定義絕對與相對風險趨避係數，是 APIEMS 中凹／線性／凸效用函數代表三種承運者的理論根據。</p></div></li>
       <li class="l-ana"><span class="tl-y">1990</span><div><b>Chen &amp; Chin — 快速路徑問題（Quickest Path）</b><p>每條弧同時有容量與前置時間，傳送 d 單位的時間＝路徑前置時間＋⌈d／瓶頸容量⌉。之後所有「時間限制下可靠度」都從這個公式出發。</p></div></li>
       <li class="l-agt"><span class="tl-y">1992</span><div><b>Watkins &amp; Dayan — Q-learning</b><p>代理人不需要知道環境機率，只靠「試了之後拿到的回饋」更新每個狀態下每個動作的價值。你的 QPR 稿件中 PathAgent 的學習規則就是它。</p></div></li>
+      <li class="l-agt"><span class="tl-y">1993</span><div><span class="tl-new">補充</span><b>Boyan &amp; Littman — Q-routing：以強化學習做動態網路封包路由（NIPS）</b><p>每個節點用 Q 值估計「經由某鄰居送達終點要花多久」，並依實際延遲更新。這是「路由由學習產生」的最早原型，QPR 已引用，時間軸原本漏了。</p></div></li>
+      <li class="l-agt"><span class="tl-y">1993</span><div><span class="tl-new">補充</span><b>Tan — 多代理人強化學習：獨立 vs. 合作代理人（ICML）</b><p>比較各自學習的獨立代理人與共享資訊的合作代理人。你的 PathAgent 彼此不溝通、各自更新 Q 表，正屬「獨立學習者」，這篇是說明此設計的標準引用。</p></div></li>
       <li class="l-ana"><span class="tl-y">1993–95</span><div><b>Jane 等；Lin, Jane &amp; Yuan — 以最小割／最小路徑評估容量網路可靠度</b><p>建立「先找出關鍵臨界狀態（邊界點），再算聯集機率」的精確解法，是多狀態流網路可靠度的基礎。</p></div></li>
+      <li class="l-dec"><span class="tl-y">1998</span><div><span class="tl-new">補充</span><b>Swaminathan, Smith &amp; Sadeh — 以多代理人建模供應鏈動態（Decision Sciences）</b><p>把供應鏈成員建成具有局部資訊與自主決策的代理人。APIEMS 用它支持「承運者是獨立決策者」的設定。</p></div></li>
+      <li class="l-agt"><span class="tl-y">1998</span><div><span class="tl-new">補充</span><b>Claus &amp; Boutilier — 合作型多代理人系統中強化學習的動態（AAAI）</b><p>指出獨立學習者會把其他代理人當成環境的一部分，導致環境非平穩、未必收斂到最佳聯合行動。審稿人問「多個 PathAgent 同時學習會不會互相干擾」時，這是要正面回應的文獻。</p></div></li>
+      <li class="l-dec"><span class="tl-y">2000</span><div><span class="tl-new">補充</span><b>Schweitzer &amp; Cachon — 已知需求分布下報童問題的決策偏誤（Management Science）</b><p>實驗顯示決策者的訂購量系統性偏離最適值。可用來支持 APIEMS「承運者承諾量不等於全知最適」的行為假設。</p></div></li>
+      <li class="l-agt"><span class="tl-y">2002</span><div><span class="tl-new">補充</span><b>Bonabeau — 代理人基模型：模擬人類系統的方法與技術（PNAS）</b><p>說明何時該用代理人模型：個體異質、互動非線性、會學習與適應。與 Macal &amp; North 並列為「為什麼用 ABMS」的兩篇常用引用。</p></div></li>
       <li class="l-ana"><span class="tl-y">2003</span><div><b>Lin — 把快速路徑延伸到隨機流網路可靠度</b><p>弧容量變成隨機變數後，「能否在 T 內送達」就成了一個機率，也就是本領域的系統可靠度定義。</p></div></li>
       <li class="l-sim"><span class="tl-y">2005</span><div><b>Ramirez-Marquez &amp; Coit — 蒙地卡羅模擬近似多狀態雙端點可靠度</b><p>不必列舉所有邊界點，而是反覆抽樣容量狀態、數成功比例。為後來的模擬路線鋪路。</p></div></li>
       <li class="l-ana"><span class="tl-y">2009</span><div><b>Lin — 隨機流網路的最適路由政策（C&amp;IE）</b><p>第一次把「路徑使用順序」納入可靠度：事先排定主路徑與備援路徑。這是你三篇稿件共同的基準網路與比較對象。</p></div></li>
+      <li class="l-dec"><span class="tl-y">2010</span><div><span class="tl-new">補充</span><b>Lin &amp; Yeh — 以網路可靠度為準則的最適承運者選擇（IJPE）</b><p>在隨機物流網路中選承運者以最大化可靠度，但決策仍由集中式規劃者做出。是 APIEMS「讓承運者自己決定」最直接的對照，目前只有 QPR 引用。</p></div></li>
       <li class="l-agt"><span class="tl-y">2010</span><div><b>Macal &amp; North — ABMS 教學導論（J. Simulation）</b><p>定義代理人模型的三要素：代理人、互動拓樸、環境。你的框架即以此對應：環境＝容量狀態 X，拓樸＝最小路徑，代理人＝Arc／Path（Carrier）／Router。</p></div></li>
+      <li class="l-agt"><span class="tl-y">2015</span><div><span class="tl-new">補充</span><b>Mnih 等 — 深度 Q 網路（Nature）</b><p>DQN 的原始論文：神經網路近似 Q 值，搭配經驗回放與目標網路。Geng 等人的方法建立在這上面，若 PathAgent 升級為 DQN 需引用。</p></div></li>
+      <li class="l-dec"><span class="tl-y">2016</span><div><span class="tl-new">補充</span><b>Yoon, Yildiz &amp; Talluri — 運輸容量決策的風險管理策略（J. Business Logistics）</b><p>分析承運者在容量不確定下的承諾與風險策略，QPR 已引用；它也是 APIEMS 承諾量模型最貼近的管理面文獻，建議 APIEMS 一併引用。</p></div></li>
+      <li class="l-agt"><span class="tl-y">2018</span><div><span class="tl-new">補充</span><b>Nazari 等（NeurIPS）；Kool 等（ICLR 2019）— 用強化學習解車輛路徑問題</b><p>以神經網路直接學出路徑策略，是「學習式路由」在作業研究的代表。QPR 已引用，可在文獻表中與可靠度導向路由區隔。</p></div></li>
+      <li class="l-agt"><span class="tl-y">2018</span><div><span class="tl-new">補充</span><b>Rashid 等 — QMIX：多代理人價值函數分解（ICML）</b><p>集中訓練、分散執行的代表方法，讓多個代理人學到協調的聯合行動。若 PathAgent 之間需要合作（而非各自學習），這是升級方向。</p></div></li>
+      <li class="l-agt"><span class="tl-y">2019</span><div><span class="tl-new">補充</span><b>Andriotis &amp; Papakonstantinou — 以深度強化學習管理大狀態與動作空間的工程系統（RESS）</b><p>可靠度領域最早系統性使用多代理人深度強化學習的代表作之一，處理元件數多時動作空間爆炸的問題。是 Zhao 等（2026）的前身，RESS 投稿時值得引用。</p></div></li>
+      <li class="l-agt"><span class="tl-y">2020</span><div><span class="tl-new">補充</span><b>Grimm 等 — ODD 協定第二次更新（JASSS）</b><p>代理人模型的標準描述格式（目的、實體、流程、設計概念、初始化、輸入、子模型）。照 ODD 寫方法章節，可大幅減少審稿人對模型細節的追問。</p></div></li>
       <li class="l-sim"><span class="tl-y">2022–26</span><div><b>Chang 系列 — 不需先求 d-MC／邊界點的模擬法</b><p>MC 為基礎（RESS 2022）、路徑為基礎（RESS 2024）、MC-reduction（AOR 2026）等方法讓模擬計算量隨網路規模線性成長，解決解析法的 NP-hard 瓶頸。</p></div></li>
       <li class="l-agt"><span class="tl-y">2022</span><div><b>Geng, Liu &amp; Fang — 服務網路動態路由之代理人演算法（EJOR）</b><p>代理人＋改良深度 Q 學習做路由，以 QoS 為目標；證明「路由可以由代理人學出來」。</p></div></li>
+      <li class="l-agt"><span class="tl-y">2023</span><div><span class="tl-new">補充</span><b>Lee &amp; Song — 以平行化多代理人 DQN 做複雜管線系統的風險導向維運（RESS）</b><p>把管線網路的各個元件交給多個 DQN 代理人，以網路層級的風險為獎勵。與你「以系統可靠度作為代理人目標」的設計最接近的維運版本。</p></div></li>
       <li class="l-agt"><span class="tl-y">2025</span><div><b>Geng &amp; Liu（RESS）；Mohebbi 等（RESS）</b><p>前者以節點代理人＋DQL 協商評估韌性；後者把最小成本流／最短路徑嵌入代理人模擬，比較維修人員的協調方式。代理人方法正式進入可靠度頂級期刊。</p></div></li>
       <li class="l-agt"><span class="tl-y">2025–26</span><div><b>Zhao 等 — MARL 設計 k-out-of-n 系統維護政策（RESS）；Geischberger 等 — 鐵路貨運代理人可靠度（JRTPM）</b><p>多代理人強化學習用於可靠度決策；以及從顧客角度計算端到端交付可靠度。</p></div></li>
-      <li class="l-you"><span class="tl-y">2026</span><div><b>你的研究：規則 → 學習 → 策略</b><p><b>APARM</b>：規則式代理人（R1／R2／R3），375 組 (d, T) 的政策決策地圖。<b>QPR</b>：PathAgent 以 Q-learning 學接受／拒絕，RouterAgent 動態排序。<b>APIEMS</b>：CarrierAgent 依風險偏好與期望效用決定承諾量。</p></div></li>
+      <li class="l-you"><span class="tl-y">2026</span><div><b>你的研究：規則 → 學習 → 策略</b><p><b>ISSAT 2026</b>：Kuo &amp; Chang，電商物流隨機流網路的代理人可靠度分析（同質承運者，APIEMS 的前一步）。<b>APARM</b>：規則式代理人（R1／R2／R3），375 組 (d, T) 的政策決策地圖。<b>QPR</b>：PathAgent 以 Q-learning 學接受／拒絕，RouterAgent 動態排序。<b>APIEMS</b>：CarrierAgent 依風險偏好與期望效用決定承諾量。</p></div></li>
     </ol>
 
     <h3 class="ctx-h" id="ctx-algo">演算法詳解</h3>
@@ -891,6 +910,31 @@
           <tr><th>決策內容</th><td>路徑優先順序</td><td>選哪條路</td><td>接受／拒絕＋動態排序</td><td>承諾多少量</td><td>轉送給誰</td></tr>
           <tr><th>績效指標</th><td colspan="4">需求 d 於時間 T 內送達之機率（隨機流網路可靠度）</td><td>韌性（可靠度、保障性、維修性）</td></tr>
           <tr><th>主要發現</th><td>最適順序隨 (d, T) 改變</td><td>無單一規則全面最佳</td><td>18／25 情境勝出，平均 0.7308 → 0.8267</td><td>風險偏好改變可靠度；R<sub>A</sub> ≤ R<sub>C</sub></td><td>擾動下可動態重分派</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="ctx-h" id="ctx-gap">補漏檢查：你的三篇稿件引用了哪些</h3>
+    <p class="ctx-lead">依你上傳的 APARM、QPR、APIEMS 稿件全文比對（✓ 已引用、- 未引用、? 需確認）。最後一欄是建議補引的理由。</p>
+    <div class="mx-wrap">
+      <table class="mx gap">
+        <thead><tr><th>文獻</th><th>脈絡</th><th class="you">APARM</th><th class="you">QPR</th><th class="you">APIEMS</th><th>為什麼要補</th></tr></thead>
+        <tbody>
+          <tr><th>Boyan &amp; Littman (1993) Q-routing</th><td>代理人與學習</td><td class="ck">-</td><td class="ck">✓</td><td class="ck">-</td><td>APARM 以「路由規則」為主題，可引用作為學習式路由的起點</td></tr>
+          <tr><th>Tan (1993) 獨立 vs. 合作代理人</th><td>代理人與學習</td><td class="ck">-</td><td class="ck">-</td><td class="ck">-</td><td>QPR 的 PathAgent 是獨立學習者，需說明此設計</td></tr>
+          <tr><th>Claus &amp; Boutilier (1998) 合作型 MARL 動態</th><td>代理人與學習</td><td class="ck">-</td><td class="ck">-</td><td class="ck">-</td><td>回應「多個代理人同時學習是否收斂」</td></tr>
+          <tr><th>Mnih 等 (2015) DQN</th><td>代理人與學習</td><td class="ck">-</td><td class="ck">-</td><td class="ck">-</td><td>延伸到大型網路時必引</td></tr>
+          <tr><th>Rashid 等 (2018) QMIX</th><td>代理人與學習</td><td class="ck">-</td><td class="ck">-</td><td class="ck">-</td><td>PathAgent 改為合作學習時的方法</td></tr>
+          <tr><th>Andriotis &amp; Papakonstantinou (2019, RESS)</th><td>代理人與學習</td><td class="ck">-</td><td class="ck">-</td><td class="ck">-</td><td>可靠度期刊中的多代理人深度強化學習先例</td></tr>
+          <tr><th>Lee &amp; Song (2023, RESS)</th><td>代理人與學習</td><td class="ck">-</td><td class="ck">-</td><td class="ck">-</td><td>以網路風險為獎勵的多代理人 DQN</td></tr>
+          <tr><th>Geng, Liu &amp; Fang (2022, EJOR)</th><td>代理人與學習</td><td class="ck">-</td><td class="ck">-</td><td class="ck">-</td><td>你引用了 Geng &amp; Liu (2025)，但其前身路由論文未引</td></tr>
+          <tr><th>Mohebbi 等 (2025, RESS)</th><td>代理人與學習</td><td class="ck">-</td><td class="ck">-</td><td class="ck">-</td><td>代理人模擬嵌入網路流演算法</td></tr>
+          <tr><th>Zhao 等 (2026, RESS) MARL 維護</th><td>代理人與學習</td><td class="ck">-</td><td class="ck">?</td><td class="ck">-</td><td>QPR 內出現 Zhao 字樣，請確認是否為同一篇</td></tr>
+          <tr><th>Grimm 等 (2020) ODD 協定</th><td>方法與驗證</td><td class="ck">-</td><td class="ck">-</td><td class="ck">-</td><td>三篇都適用，方法章節可照 ODD 撰寫</td></tr>
+          <tr><th>Bonabeau (2002, PNAS)</th><td>方法與驗證</td><td class="ck">-</td><td class="ck">-</td><td class="ck">-</td><td>與 Macal &amp; North 並列說明為何用 ABMS</td></tr>
+          <tr><th>Lin &amp; Yeh (2010, IJPE) 承運者選擇</th><td>決策與供應鏈</td><td class="ck">-</td><td class="ck">✓</td><td class="ck">-</td><td>APIEMS 主題就是承運者，建議補引</td></tr>
+          <tr><th>Yoon, Yildiz &amp; Talluri (2016)</th><td>決策與供應鏈</td><td class="ck">-</td><td class="ck">✓</td><td class="ck">-</td><td>APIEMS 承諾量決策的管理面依據</td></tr>
+          <tr><th>Pratt (1964)；Schweitzer &amp; Cachon (2000)</th><td>決策與供應鏈</td><td class="ck">-</td><td class="ck">-</td><td class="ck">✓</td><td>QPR 若加入承運者偏好也可引用</td></tr>
         </tbody>
       </table>
     </div>
@@ -1485,7 +1529,7 @@ const DEEP_ARTICLES = [
   "limitations_en": "Gaps identified in your papers: (1) the policy is static and cannot react to observed capacities; (2) changes in (d, T) require re-evaluating all candidate policies; (3) carriers are not modelled as decision makers; (4) boundary-point generation is NP-hard and scales poorly.",
   "extended_ideas_zh": "(1) 將Lin (2009)的靜態最適政策作為「完全資訊集中規劃者上界」與「靜態下界」之間的參照，系統性定位您三種代理人（規則式、Q-learning、風險偏好承運者）的可靠度落點，形成一張統一比較圖；(2) 將單一路徑傳送假設放寬為多路徑並行分流，檢驗代理人框架優勢是否擴大；(3) 在更大規模網路（數十條MP）上重做比較，量化ABMS相對解析法的計算優勢。",
   "extended_ideas_en": "(1) Use Lin's (2009) static optimum as a reference between a full-information planner (upper bound) and static rules, positioning your three agent designs (rule-based, Q-learning, risk-preference carriers) on one unified chart; (2) relax single-path transmission to parallel multi-path splitting and test whether the agent advantage grows; (3) repeat the comparison on larger networks (dozens of MPs) to quantify ABMS's computational edge over analytical methods.",
-  "doi": null,
+  "doi": "https://doi.org/10.1016/j.cie.2008.09.002",
   "full_text_accessed": false
  },
 {
