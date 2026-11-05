@@ -96,14 +96,14 @@ def date_of(item, key):
 
 
 def short_authors(item, limit=6):
-    names = []
+    names = []  # Crossref sometimes stores U+FFFD for a lost accent; drop it below
     for a in item.get("author", [])[:limit]:
         n = " ".join(x for x in (a.get("given"), a.get("family")) if x) or a.get("name", "")
         if n:
             names.append(n)
     if len(item.get("author", [])) > limit:
         names.append("et al.")
-    return ", ".join(names) or "—"
+    return (", ".join(names) or "—").replace("\ufffd", "")
 
 
 def tag_text(text, tags):
