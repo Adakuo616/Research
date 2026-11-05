@@ -1,10 +1,10 @@
 {
  "meta": {
-  "updated": "2026-11-05T10:20+08:00",
+  "updated": "2026-11-05T13:48+08:00",
   "since": "2026-10-29",
-  "new_today": 56,
+  "new_today": 1,
   "summarised": 0,
-  "total": 56
+  "total": 57
  },
  "sources": {
   "tags": [
@@ -175,6 +175,24 @@
   ]
  },
  "feed": [
+  {
+   "doi": "10.1177/1748006x261498260",
+   "url": "https://doi.org/10.1177/1748006x261498260",
+   "j": "pio",
+   "journal": "Proceedings of IMechE Part O: Journal of Risk and Reliability",
+   "title": "Deeply Coupled Adaptive Kriging-Based Sequential Space Conversion for failure probability estimation",
+   "authors": "Yang Chen, Chuang Li, Yuan-Zhuo Ma, Zhen-Yue Jia",
+   "online": "2026-11-05",
+   "published": "2026-11-04",
+   "abstract": "To inherit the merit of Sequential Space Conversion (SESC) that can avoid geometrically misleading of the LSF during failure probability estimation and enhance its efficiency, a deeply coupled adaptive Kriging-based SESC method is proposed. Apart from an initial global enrichment, the Kriging model can be locally enriched in each simulation level of SESC. Since each level of MCMC samples progressively approaches the failure region, Kriging model locally updated using those as testing samples can capture more information close to the failure boundary and benefits the performance of the surrogate-assisted simulation method. To keep spatial consistency of the sequence of local enrichment in each level of converted space in SESC, an improved adaptive scheme with a modified U-learning function is proposed as well. By tightly integrating the adaptive Kriging refinement with the SESC progression, the proposed method not only inherits the advantage of SESC in avoiding geometrically misleading failure region identification, but also preserves spatial consistency across successive transformed spaces, thereby achieving accurate failure probability estimation with substantially reduced computa",
+   "tags": [
+    "reliability",
+    "simulation"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-05"
+  },
   {
    "doi": "10.1007/s10479-026-07463-9",
    "url": "https://doi.org/10.1007/s10479-026-07463-9",
