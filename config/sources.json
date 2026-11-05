@@ -381,5 +381,12 @@
         }
       ]
     }
-  ]
+  ],
+  "deep": {
+    "enabled": true,
+    "model": "claude-opus-5-5",
+    "effort": "medium",
+    "max_per_run": 40,
+    "concurrency": 4
+  }
 }

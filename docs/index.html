@@ -819,6 +819,7 @@
       <h2>深度文獻分析</h2>
       <p class="desc">針對期刊追蹤分頁中的 42 篇精選文章，以及 7 篇與 Agent-based 可靠度研究（ABMS × 隨機流網路）直接相關的核心文獻（可用下方「Agent／多代理人」主題篩選），逐篇拆解研究背景、理論基礎、構念、研究模型、方法論、發現與延伸研究題目等 12 個面向，中英對照呈現，供文獻回顧時快速判斷可否借用其理論框架或方法論。技術／演算法類論文之「理論基礎」「研究模型與假設」欄位以其方法論框架與問題設定呈現，不強套社會科學式因果假設。</p>
       <p class="deep-note">Agent 文獻回顧主軸（2026-11-04 新增）：以 Macal &amp; North (2010) 的 ABMS 三要素為方法基礎、Lin (2009) 靜態最適路由政策為比較基準，整理三股文獻——(a) 代理人＋深度Q學習之網路路由與韌性（Geng 等, EJOR 2022；Geng &amp; Liu, RESS 2025）、(b) 嵌入網路流演算法之代理人模擬與 MARL 可靠度決策（Mohebbi 等, RESS 2025；Zhao 等, RESS 2026）、(c) 顧客觀點之端到端交付可靠度（Geischberger 等, JRTPM 2026）。研究缺口：既有代理人研究多以節點可用性或 QoS 衡量，尚少以「多狀態弧容量＋前置時間下，需求 d 於時間 T 內送達」的隨機流網路可靠度作為代理人決策目標，此即規則式代理人、Q-learning PathAgent 與風險偏好 CarrierAgent 三種設計之定位。每篇「可延伸研究題目」欄位已對應至您的 QPR／APARM／APIEMS 稿件。</p>
+      <p class="deep-note">自動分析：GitHub 版每天會由 Claude 為新進的每日文章、主題文獻與追蹤學者的著作補寫同樣 12 個面向的分析，標示「AI 自動分析」。這些分析只依摘要（取不到摘要時僅依標題）撰寫，查不到的欄位會寫明需查閱全文，引用前請核對原文。</p>
       <p class="deep-note">誠信聲明：多數期刊全文有出版社付費牆，本分析已逐篇嘗試開啟全文／摘要／highlights，「已閱全文」標記代表取得摘要以外的實質內容；查不到的欄位一律標註「摘要／可讀全文未提及此項，需查閱完整全文」，不會編造內容。</p>
     </div>
 
@@ -854,6 +855,7 @@
       </select>
       <button class="deep-toggle-all" id="deepToggleAll">全部展開</button>
     </div>
+    <div class="deep-filter-row"><span class="deep-filter-label">來源</span><div class="filter-bar" id="deepSrcBar" style="margin-bottom:0;"></div></div>
     <div class="deep-filter-row"><span class="deep-filter-label">主題</span><div class="filter-bar" id="deepTopicBar" style="margin-bottom:0;"></div></div>
     <div class="deep-filter-row"><span class="deep-filter-label">期刊</span><div class="filter-bar" id="deepFilterBar" style="margin-bottom:0;"></div>
       <span class="deep-count mono" id="deepCount"></span>
@@ -870,6 +872,7 @@
 </main>
 
 <script src="data/radar-data.js"></script>
+<script src="data/deep-data.js"></script>
 <script>
 // ===== 學者著作資料 (curated from Google Scholar, filtered for homonym noise) =====
 // format: [year, title, authors, venue, cites]
@@ -3408,6 +3411,19 @@ const DEEP_ARTICLES = [
 
 </script>
 <script>
+// Add automatic deep analyses produced by the daily GitHub run (GitHub version only).
+(function(){
+  var R = window.RADAR_DEEP;
+  if(!R || !R.items) return;
+  var have = {};
+  DEEP_ARTICLES.forEach(function(a){ have[String(a.title_en).toLowerCase().replace(/[^a-z0-9]+/g, '')] = 1; });
+  R.items.forEach(function(a){
+    var k = String(a.title_en).toLowerCase().replace(/[^a-z0-9]+/g, '');
+    if(!have[k]){ DEEP_ARTICLES.push(a); have[k] = 1; }
+  });
+})();
+</script>
+<script>
 (function(){
   "use strict";
 
@@ -3748,6 +3764,18 @@ const DEEP_ARTICLES = [
   var deepOpenState = {};
 
   var deepSort = "year-desc";
+  var deepActiveSrc = "all";
+  var SRC_LABEL = {curated: "人工精選", feed: "每日新文章", topic: "主題文獻", scholar: "學者著作"};
+  function srcOf(a){ return a.auto ? String(a.src || "feed").split(":")[0] : "curated"; }
+  var srcCount = {}; DEEP_ARTICLES.forEach(function(a){ var s = srcOf(a); srcCount[s] = (srcCount[s] || 0) + 1; });
+  var deepSrcBar = document.getElementById('deepSrcBar');
+  deepSrcBar.innerHTML = '<button class="chip on" data-s="all" type="button">全部 ' + DEEP_ARTICLES.length + '</button>'
+    + ["curated", "feed", "topic", "scholar"].filter(function(s){ return srcCount[s]; }).map(function(s){
+      return '<button class="chip" data-s="' + s + '" type="button">' + SRC_LABEL[s] + ' ' + srcCount[s] + '</button>'; }).join('');
+  deepSrcBar.addEventListener('click', function(e){
+    var c = e.target.closest('.chip'); if(!c) return; deepActiveSrc = c.dataset.s;
+    deepSrcBar.querySelectorAll('.chip').forEach(function(x){ x.classList.toggle('on', x === c); }); renderDeepList();
+  });
   var deepActiveTopic = "all";
   var DEEP_TOPICS = [
     {k:"agent", label:"Agent／多代理人", kw:["agent","multi-agent","reinforcement learning","q-learning","marl","game","learning in strategic","negotiation"]},
@@ -3788,7 +3816,7 @@ const DEEP_ARTICLES = [
   var deepFilterBar = document.getElementById('deepFilterBar');
   deepFilterBar.innerHTML = '<button class="chip on" data-j="all">全部期刊</button>' + deepJIds.map(function(jid){
     var m = JOURNALS_META.find(x=>x.id===jid);
-    return '<button class="chip" data-j="'+jid+'" title="'+(m?m.name:jid)+'">'+jid.toUpperCase()+'</button>';
+    return '<button class="chip" data-j="'+jid+'" title="'+(m?m.name:jid)+'">'+(jid === 'x' ? '其他期刊' : jid.toUpperCase())+'</button>';
   }).join('');
   deepFilterBar.addEventListener('click', function(e){
     var chip = e.target.closest('.chip');
@@ -3826,6 +3854,7 @@ const DEEP_ARTICLES = [
     var list = DEEP_ARTICLES.filter(function(a){
       if(deepActiveJ !== "all" && a.j !== deepActiveJ) return false;
       if(deepActiveTopic !== "all" && deepTopicsOf(a).indexOf(deepActiveTopic) === -1) return false;
+      if(deepActiveSrc !== "all" && srcOf(a) !== deepActiveSrc) return false;
       if(deepSearchVal){
         var hay = (a.title_zh+' '+a.title_en+' '+a.journal+' '+(a.keywords||[]).join(' ')).toLowerCase();
         if(hay.indexOf(deepSearchVal) === -1) return false;
@@ -3849,7 +3878,9 @@ const DEEP_ARTICLES = [
       }
       var isOpen = deepOpenAll || deepOpenState[a.id] || false;
       var m = JOURNALS_META.find(x=>x.id===a.j);
-      var badge = a.full_text_accessed
+      var badge = a.auto
+        ? '<span class="dbadge abstract">AI 自動分析・' + (a.basis === 'abstract' ? '依摘要' : '僅依標題') + '</span>'
+        : a.full_text_accessed
         ? '<span class="dbadge full">已閱全文</span>'
         : '<span class="dbadge abstract">僅摘要</span>';
       var doiHtml = a.doi ? '<a class="ddoi" href="'+a.doi+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">DOI ↗</a>' : '<span class="ddoi mono" style="color:var(--text-3);">DOI 未查得</span>';

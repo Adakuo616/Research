@@ -15,11 +15,12 @@
 4. 若設定了 `ANTHROPIC_API_KEY`，用 Claude 為每篇寫一到兩句繁體中文重點與一句英文摘要。
 5. 依 ORCID 或英文姓名從 Crossref 抓每位追蹤學者的完整著作清單（以主題關鍵字過濾同名雜訊）；引用數、h-index、i10-index 優先取 OpenAlex，取不到時改用 Crossref 引用數計算（通常低於 Google Scholar，頁面上會標示來源）。
 6. 結果寫入 `docs/data/radar.json` 與 `docs/data/radar-data.js`，由 workflow 自動 commit。
+7. `scripts/deep_analyze.py` 為每篇還沒有深度分析的文章（每日新文章 → 主題文獻 → 學者著作）請 Claude 寫 12 個面向的中英對照分析，存入 `docs/data/deep.json`，顯示在「深度文獻分析」分頁並標示「AI 自動分析」。分析只依摘要撰寫，找不到摘要時僅依標題。每次最多處理 `config/sources.json` 裡 `deep.max_per_run` 篇（預設 40），積壓的文章會分幾天做完。需要 `ANTHROPIC_API_KEY`。
 
 ## 第一次設定（約 3 分鐘）
 
 1. **開啟 GitHub Pages**：Settings → Pages → Build and deployment → Source 選 **Deploy from a branch**，Branch 選預設分支、資料夾選 **/docs**，按 Save。
-2. **（選用）中文摘要**：Settings → Secrets and variables → Actions → New repository secret，名稱 `ANTHROPIC_API_KEY`。沒有設定時仍會每天更新，只是沒有中文摘要。
+2. **Claude API 金鑰（中文摘要與深度分析需要）**：Settings → Secrets and variables → Actions → New repository secret，名稱 `ANTHROPIC_API_KEY`。沒有設定時仍會每天抓新文章，只是沒有中文摘要與自動深度分析。
 3. **（建議）OpenAlex 金鑰**：OpenAlex 的免費額度是依 IP 共用，GitHub Actions 很容易用完。到 openalex.org 申請免費 API key，存成 secret `OPENALEX_API_KEY`。沒有金鑰時學者指標會改用 Crossref 計算，文章摘要補抓也會略過。
 4. **跑第一次**：Actions → Daily radar update → Run workflow。
 
