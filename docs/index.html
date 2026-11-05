@@ -357,6 +357,14 @@
     padding:7px 12px;cursor:pointer;
   }
   .deep-toggle-all:hover{border-color:var(--accent);color:var(--text);}
+  .deep-sort{font:inherit;font-size:12.5px;padding:7px 12px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text);max-width:100%;}
+  .deep-sort:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .deep-filter-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;}
+  .deep-filter-label{font-size:12px;color:var(--text-2);padding-top:7px;white-space:nowrap;min-width:2.5em;}
+  .deep-filter-row .filter-bar{flex:1;min-width:0;}
+  .deep-year{font-family:var(--f-display);font-weight:800;font-size:18px;margin:20px 0 10px;display:flex;align-items:baseline;gap:8px;}
+  .deep-year span{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:400;color:var(--text-3);}
+  .topic-tag{font-size:11px;padding:2px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap;}
   .deep-count{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-3);margin-left:auto;}
 
   .deep-card{
@@ -757,15 +765,22 @@
   <section class="view" id="view-deep">
     <div class="evo-card">
       <h2>深度文獻分析</h2>
-      <p class="desc">針對期刊追蹤分頁中的 42 篇精選文章，以及 7 篇與 Agent-based 可靠度研究（ABMS × 隨機流網路）直接相關的核心文獻（列表最前方，期刊代碼 JOS／JRTPM 與標題含 Agent 者），逐篇拆解研究背景、理論基礎、構念、研究模型、方法論、發現與延伸研究題目等 12 個面向，中英對照呈現，供文獻回顧時快速判斷可否借用其理論框架或方法論。技術／演算法類論文之「理論基礎」「研究模型與假設」欄位以其方法論框架與問題設定呈現，不強套社會科學式因果假設。</p>
+      <p class="desc">針對期刊追蹤分頁中的 42 篇精選文章，以及 7 篇與 Agent-based 可靠度研究（ABMS × 隨機流網路）直接相關的核心文獻（可用下方「Agent／多代理人」主題篩選），逐篇拆解研究背景、理論基礎、構念、研究模型、方法論、發現與延伸研究題目等 12 個面向，中英對照呈現，供文獻回顧時快速判斷可否借用其理論框架或方法論。技術／演算法類論文之「理論基礎」「研究模型與假設」欄位以其方法論框架與問題設定呈現，不強套社會科學式因果假設。</p>
       <p class="deep-note">Agent 文獻回顧主軸（2026-11-04 新增）：以 Macal &amp; North (2010) 的 ABMS 三要素為方法基礎、Lin (2009) 靜態最適路由政策為比較基準，整理三股文獻——(a) 代理人＋深度Q學習之網路路由與韌性（Geng 等, EJOR 2022；Geng &amp; Liu, RESS 2025）、(b) 嵌入網路流演算法之代理人模擬與 MARL 可靠度決策（Mohebbi 等, RESS 2025；Zhao 等, RESS 2026）、(c) 顧客觀點之端到端交付可靠度（Geischberger 等, JRTPM 2026）。研究缺口：既有代理人研究多以節點可用性或 QoS 衡量，尚少以「多狀態弧容量＋前置時間下，需求 d 於時間 T 內送達」的隨機流網路可靠度作為代理人決策目標，此即規則式代理人、Q-learning PathAgent 與風險偏好 CarrierAgent 三種設計之定位。每篇「可延伸研究題目」欄位已對應至您的 QPR／APARM／APIEMS 稿件。</p>
       <p class="deep-note">誠信聲明：多數期刊全文有出版社付費牆，本分析已逐篇嘗試開啟全文／摘要／highlights，「已閱全文」標記代表取得摘要以外的實質內容；查不到的欄位一律標註「摘要／可讀全文未提及此項，需查閱完整全文」，不會編造內容。</p>
     </div>
 
     <div class="deep-toolbar">
       <input class="search" type="text" placeholder="搜尋標題、期刊、關鍵字…" id="deepSearch"/>
-      <div class="filter-bar" id="deepFilterBar" style="margin-bottom:0;"></div>
+      <select class="deep-sort" id="deepSort" aria-label="排序">
+        <option value="year-desc">年代：新 → 舊</option>
+        <option value="year-asc">年代：舊 → 新</option>
+        <option value="default">原始順序</option>
+      </select>
       <button class="deep-toggle-all" id="deepToggleAll">全部展開</button>
+    </div>
+    <div class="deep-filter-row"><span class="deep-filter-label">主題</span><div class="filter-bar" id="deepTopicBar" style="margin-bottom:0;"></div></div>
+    <div class="deep-filter-row"><span class="deep-filter-label">期刊</span><div class="filter-bar" id="deepFilterBar" style="margin-bottom:0;"></div>
       <span class="deep-count mono" id="deepCount"></span>
     </div>
     <div id="deepList"></div>
@@ -3656,6 +3671,42 @@ const DEEP_ARTICLES = [
   var deepOpenAll = false;
   var deepOpenState = {};
 
+  var deepSort = "year-desc";
+  var deepActiveTopic = "all";
+  var DEEP_TOPICS = [
+    {k:"agent", label:"Agent／多代理人", kw:["agent","multi-agent","reinforcement learning","q-learning","marl","game","learning in strategic","negotiation"]},
+    {k:"reliability", label:"可靠度／維護", kw:["reliab","maintenance","failure","fault","degradation","remaining useful life","prognostic","life test","step-stress","health indicator","run-to-failure"]},
+    {k:"risk", label:"風險／韌性／安全", kw:["risk","safety","hazard","resilien","disaster","attack","cyber","emergency"]},
+    {k:"simulation", label:"模擬", kw:["simulat","monte carlo","digital twin","petri","discrete-event","population model","agent-based"]},
+    {k:"optimization", label:"最佳化／排程", kw:["optimi","scheduling","benders","heuristic","programming","cutting stock","layout","matheuristic","allocation"]},
+    {k:"network", label:"網路／路由", kw:["network","routing","flow","path"]},
+    {k:"supply", label:"供應鏈／物流", kw:["supply chain","logistic","delivery","shipping","freight","rail","transport","regionaliz","trade credit"]},
+    {k:"pm", label:"專案管理", kw:["project","megaproject","program governance","agile","competenc"]},
+    {k:"ai", label:"AI／機器學習", kw:["machine learning","deep learning","neural","transformer","xgboost","gaussian process","computer vision","artificial intelligence","autoencoder","kriging","mixture of experts","physics-guided"]},
+  ];
+  function deepTopicsOf(a){
+    if(a._topics) return a._topics;
+    var t = (a.title_en+' '+(a.keywords||[]).join(' ')).toLowerCase();
+    var out = DEEP_TOPICS.filter(function(tp){ return tp.kw.some(function(k){ return t.indexOf(k) !== -1; }); }).map(function(tp){ return tp.k; });
+    a._topics = out.length ? out : ["other"];
+    return a._topics;
+  }
+  var DEEP_TOPIC_LABEL = {other:"其他"}; DEEP_TOPICS.forEach(function(tp){ DEEP_TOPIC_LABEL[tp.k] = tp.label; });
+  var deepTopicBar = document.getElementById('deepTopicBar');
+  var topicCount = {};
+  DEEP_ARTICLES.forEach(function(a){ deepTopicsOf(a).forEach(function(k){ topicCount[k] = (topicCount[k]||0) + 1; }); });
+  deepTopicBar.innerHTML = '<button class="chip on" data-t="all" type="button">全部主題</button>'
+    + DEEP_TOPICS.concat([{k:"other"}]).filter(function(tp){ return topicCount[tp.k]; }).map(function(tp){
+      return '<button class="chip" data-t="'+tp.k+'" type="button">'+DEEP_TOPIC_LABEL[tp.k]+' '+topicCount[tp.k]+'</button>';
+    }).join('');
+  deepTopicBar.addEventListener('click', function(e){
+    var chip = e.target.closest('.chip'); if(!chip) return;
+    deepActiveTopic = chip.dataset.t;
+    deepTopicBar.querySelectorAll('.chip').forEach(function(c){ c.classList.toggle('on', c===chip); });
+    renderDeepList();
+  });
+  document.getElementById('deepSort').addEventListener('change', function(e){ deepSort = e.target.value; renderDeepList(); });
+
   var deepJIds = [];
   DEEP_ARTICLES.forEach(function(a){ if(deepJIds.indexOf(a.j)===-1) deepJIds.push(a.j); });
   var deepFilterBar = document.getElementById('deepFilterBar');
@@ -3698,14 +3749,28 @@ const DEEP_ARTICLES = [
   function renderDeepList(){
     var list = DEEP_ARTICLES.filter(function(a){
       if(deepActiveJ !== "all" && a.j !== deepActiveJ) return false;
+      if(deepActiveTopic !== "all" && deepTopicsOf(a).indexOf(deepActiveTopic) === -1) return false;
       if(deepSearchVal){
         var hay = (a.title_zh+' '+a.title_en+' '+a.journal+' '+(a.keywords||[]).join(' ')).toLowerCase();
         if(hay.indexOf(deepSearchVal) === -1) return false;
       }
       return true;
     });
+    if(deepSort !== "default"){
+      var dir = deepSort === "year-asc" ? 1 : -1;
+      list = list.map(function(a, i){ return [a, i]; }).sort(function(x, y){
+        return ((x[0].year||0) - (y[0].year||0)) * dir || x[1] - y[1];
+      }).map(function(x){ return x[0]; });
+    }
     document.getElementById('deepCount').textContent = list.length + ' / ' + DEEP_ARTICLES.length + ' 篇';
+    var lastYear = null;
     document.getElementById('deepList').innerHTML = list.map(function(a){
+      var yearHead = '';
+      if(deepSort !== "default" && a.year !== lastYear){
+        lastYear = a.year;
+        var ny = list.filter(function(x){ return x.year === a.year; }).length;
+        yearHead = '<div class="deep-year">'+a.year+' <span>'+ny+' 篇</span></div>';
+      }
       var isOpen = deepOpenAll || deepOpenState[a.id] || false;
       var m = JOURNALS_META.find(x=>x.id===a.j);
       var badge = a.full_text_accessed
@@ -3717,12 +3782,12 @@ const DEEP_ARTICLES = [
       var ex = DEEP_EXTRAS[a.id];
       var exHtml = ex ? ('<div class="dx"><div class="dx-label">在研究脈絡中的位置</div><div class="dx-body">'+ex.context+'</div></div>'+'<div class="dx algo-x"><div class="dx-label">演算法詳解（一步一步）</div><div class="dx-body">'+ex.algo+'</div></div>') : '';
       var bodyHtml = kwHtml + exHtml + FIELD_DEFS.map(function(def){ return dfield(a, def); }).join('');
-      return '<div class="deep-card'+(isOpen?' open':'')+'" data-id="'+a.id+'">'
+      return yearHead+'<div class="deep-card'+(isOpen?' open':'')+'" data-id="'+a.id+'">'
         +'<div class="deep-head">'
           +'<div>'
             +'<div class="dtitle-zh">'+a.title_zh+'</div>'
             +'<div class="dtitle-en">'+a.title_en+'</div>'
-            +'<div class="dmeta"><span class="djn">'+(m?m.name:a.journal)+' · '+a.year+'</span>'+catHtml+badge+doiHtml+'</div>'
+            +'<div class="dmeta"><span class="djn">'+(m?m.name:a.journal)+' · '+a.year+'</span>'+deepTopicsOf(a).map(function(k){ return '<span class="topic-tag">'+DEEP_TOPIC_LABEL[k]+'</span>'; }).join('')+badge+doiHtml+'</div>'
           +'</div>'
           +'<div class="dcount-col"><span class="chev">▸</span></div>'
         +'</div>'
