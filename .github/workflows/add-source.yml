@@ -1,0 +1,56 @@
+name: Add journal or keyword from issue
+
+on:
+  issues:
+    types: [opened, labeled]
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+jobs:
+  apply:
+    # Only the repository owner can change what the radar tracks.
+    if: >-
+      contains(github.event.issue.labels.*.name, 'radar-source') &&
+      github.event.issue.user.login == github.repository_owner
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Update config/sources.json from the issue form
+        id: apply
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: python scripts/apply_issue.py >> "$GITHUB_OUTPUT"
+
+      - name: Commit config
+        if: steps.apply.outputs.changed == 'true'
+        env:
+          SUMMARY: ${{ steps.apply.outputs.summary }}
+          ISSUE_NO: ${{ github.event.issue.number }}
+        run: |
+          git config user.name "radar-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config/sources.json
+          git commit -m "Track: ${SUMMARY} (#${ISSUE_NO})"
+          git push
+
+      - name: Run the daily update now
+        if: steps.apply.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run daily-update.yml --ref "${{ github.event.repository.default_branch }}"
+
+      - name: Reply and close
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MSG: ${{ steps.apply.outputs.message }}
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --body "$MSG"
+          gh issue close ${{ github.event.issue.number }}

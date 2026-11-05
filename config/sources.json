@@ -1,0 +1,43 @@
+{
+  "lookback_days": 7,
+  "keep_days": 120,
+  "require_tag": true,
+  "summarize": {
+    "enabled": true,
+    "model": "claude-opus-5-5",
+    "max_per_run": 60
+  },
+  "tags": [
+    {"id": "agent", "label": "Agent", "terms": ["agent", "multi-agent", "reinforcement learning", "q-learning", "deep q", "marl", "large language model", "llm", "autonomous"]},
+    {"id": "reliability", "label": "Reliability", "terms": ["reliability", "reliable", "failure", "fault", "degradation", "maintenance", "remaining useful life", "resilience", "resilient"]},
+    {"id": "risk", "label": "Risk", "terms": ["risk", "hazard", "safety", "disruption", "vulnerab"]},
+    {"id": "simulation", "label": "Simulation / OR", "terms": ["simulation", "monte carlo", "discrete-event", "discrete event", "digital twin", "markov", "queueing", "stochastic"]},
+    {"id": "pm", "label": "Project Mgmt", "terms": ["project", "megaproject", "scheduling"]},
+    {"id": "sfn", "label": "SFN 可靠度", "terms": ["stochastic flow network", "stochastic-flow network", "multistate flow", "multi-state flow", "multi-state network", "multistate network", "network reliability", "minimal path", "quickest path", "routing"]}
+  ],
+  "journals": [
+    {"id": "imds", "name": "Industrial Management & Data Systems", "issn": ["0263-5577", "1758-5783"]},
+    {"id": "jipe", "name": "Journal of Industrial and Production Engineering", "issn": ["2168-1015", "2168-1023"]},
+    {"id": "smpt", "name": "Simulation Modelling Practice and Theory", "issn": ["1569-190X"]},
+    {"id": "mcs", "name": "Mathematics and Computers in Simulation", "issn": ["0378-4754"]},
+    {"id": "aor", "name": "Annals of Operations Research", "issn": ["0254-5330", "1572-9338"]},
+    {"id": "ijispm", "name": "International Journal of Information Systems and Project Management", "issn": ["2182-7788"]},
+    {"id": "ejor", "name": "European Journal of Operational Research", "issn": ["0377-2217"]},
+    {"id": "ijpm", "name": "International Journal of Project Management", "issn": ["0263-7863"]},
+    {"id": "pio", "name": "Proceedings of IMechE Part O: Journal of Risk and Reliability", "issn": ["1748-006X", "1748-0078"]},
+    {"id": "ijst", "name": "Iranian Journal of Science and Technology, Trans. Mechanical Engineering", "issn": ["2228-6187", "2364-1835"]},
+    {"id": "ress", "name": "Reliability Engineering & System Safety", "issn": ["0951-8320"]},
+    {"id": "ijpe", "name": "International Journal of Production Economics", "issn": ["0925-5273"]},
+    {"id": "iciea", "name": "ICIEA (Int'l Conf. on Industrial Engineering and Applications)", "query": "International Conference on Industrial Engineering and Applications", "must_contain": "conference on industrial engineering and applications"},
+    {"id": "cie", "name": "Computers & Industrial Engineering", "issn": ["0360-8352"]},
+    {"id": "ijrr", "name": "International Journal of Reliability, Risk and Safety: Theory and Application", "issn": ["2676-3346"]},
+    {"id": "ietr", "name": "IEEE Transactions on Reliability", "issn": ["0018-9529", "1558-1721"]}
+  ],
+  "scholars": [
+    {"key": "lin", "name": "林一貴 Yi-Kuei Lin", "openalex": ["A5025141077"]},
+    {"key": "chang", "name": "張秉宸 Ping-Chen Chang", "openalex": ["A5054898122"]},
+    {"key": "yeh", "name": "葉承達 Cheng-Ta Yeh", "openalex": ["A5064349187", "A5101838657"]},
+    {"key": "huang", "name": "黃正富 Cheng-Fu Huang", "openalex": ["A5053937531"]}
+  ],
+  "scholar_topic_terms": ["reliab", "network", "flow", "supply chain", "logistic", "production", "manufactur", "maintenance", "project", "simulation", "schedul", "routing", "optimi", "transport", "power", "resilien", "agent", "deep learning", "neural", "multistate", "multi-state", "shop", "semiconductor", "computing", "delivery", "carrier", "freight"]
+}

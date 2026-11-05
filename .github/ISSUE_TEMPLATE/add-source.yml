@@ -1,0 +1,37 @@
+name: 新增追蹤期刊或關鍵字
+description: 送出後會自動寫入 config/sources.json，並立即重新抓取一次。
+title: "新增追蹤："
+labels: ["radar-source"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 類型
+      options:
+        - 關鍵字
+        - 期刊
+    validations:
+      required: true
+  - type: input
+    id: keyword
+    attributes:
+      label: 關鍵字（類型選「關鍵字」時填）
+      description: 英文，比對標題與摘要，不分大小寫。可用逗號分隔多個。
+      placeholder: digital twin, agent-based simulation
+  - type: input
+    id: tag
+    attributes:
+      label: 歸入哪個標籤
+      description: 既有標籤 id（agent、reliability、risk、simulation、pm、sfn），或輸入新名稱建立新標籤。
+      placeholder: agent
+  - type: input
+    id: journal
+    attributes:
+      label: 期刊名稱（類型選「期刊」時填）
+      placeholder: Transportation Research Part E
+  - type: input
+    id: issn
+    attributes:
+      label: ISSN（類型選「期刊」時填）
+      description: 可填印刷版或電子版，用逗號分隔多個。可在 portal.issn.org 或期刊官網查詢。
+      placeholder: 1366-5545
