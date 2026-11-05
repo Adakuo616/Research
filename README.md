@@ -16,14 +16,12 @@
 5. 依 ORCID 或英文姓名從 Crossref 抓每位追蹤學者的完整著作清單（以主題關鍵字過濾同名雜訊）；引用數、h-index、i10-index 優先取 OpenAlex，取不到時改用 Crossref 引用數計算（通常低於 Google Scholar，頁面上會標示來源）。
 6. 結果寫入 `docs/data/radar.json` 與 `docs/data/radar-data.js`，由 workflow 自動 commit。
 
-## 第一次設定（約 5 分鐘）
+## 第一次設定（約 3 分鐘）
 
 1. **開啟 GitHub Pages**：Settings → Pages → Build and deployment → Source 選 **Deploy from a branch**，Branch 選預設分支、資料夾選 **/docs**，按 Save。
-2. **允許 workflow 寫入**：Settings → Actions → General → Workflow permissions 選 **Read and write permissions**。
-3. **建立標籤**：Issues → Labels → New label，名稱 `radar-source`（加入期刊或關鍵字的表單會用到）。
-4. **（選用）中文摘要**：Settings → Secrets and variables → Actions → New repository secret，名稱 `ANTHROPIC_API_KEY`。沒有設定時仍會每天更新，只是沒有中文摘要。
-5. **（建議）OpenAlex 金鑰**：OpenAlex 的免費額度是依 IP 共用，GitHub Actions 很容易用完。到 openalex.org 申請免費 API key，存成 secret `OPENALEX_API_KEY`。沒有金鑰時學者指標會改用 Crossref 計算，文章摘要補抓也會略過。
-6. **跑第一次**：Actions → Daily radar update → Run workflow。
+2. **（選用）中文摘要**：Settings → Secrets and variables → Actions → New repository secret，名稱 `ANTHROPIC_API_KEY`。沒有設定時仍會每天更新，只是沒有中文摘要。
+3. **（建議）OpenAlex 金鑰**：OpenAlex 的免費額度是依 IP 共用，GitHub Actions 很容易用完。到 openalex.org 申請免費 API key，存成 secret `OPENALEX_API_KEY`。沒有金鑰時學者指標會改用 Crossref 計算，文章摘要補抓也會略過。
+4. **跑第一次**：Actions → Daily radar update → Run workflow。
 
 ## 加入期刊、關鍵字或學者
 

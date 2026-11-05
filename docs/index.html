@@ -396,6 +396,18 @@
     font-size:12.5px;color:var(--text-2);max-width:74ch;margin-top:8px;
   }
 
+  .add-sch{background:var(--surface);border:1px dashed var(--accent);border-radius:18px;padding:16px 20px;margin:-10px 0 28px;display:flex;flex-direction:column;gap:12px;}
+  .add-sch-head h3{font-size:16px;font-weight:700;color:var(--accent);}
+  .add-sch-head p{font-size:12.5px;color:var(--text-2);margin:4px 0 0;max-width:80ch;line-height:1.6;}
+  .add-sch-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px;}
+  .add-sch-fields label{display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text-2);min-width:0;}
+  .add-sch-fields input{font:inherit;font-size:13px;padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);min-width:0;}
+  .add-sch-fields input:focus{outline:2px solid var(--accent);outline-offset:1px;}
+  .add-sch-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-end;}
+  .add-sch-err{font-size:12.5px;color:var(--amber);margin:0;margin-right:auto;}
+  .add-sch-btn{font-size:13.5px;padding:8px 18px;border-radius:999px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;}
+  .add-sch-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
   footer{
     margin-top:40px;padding-top:22px;border-top:1px solid var(--border);
     font-size:12px;color:var(--text-3);
@@ -701,7 +713,7 @@
           <h3>目前追蹤的範圍</h3>
           <details><summary id="trackJournalsSum">期刊</summary><ul class="dl-list" id="trackJournals"></ul></details>
           <details><summary id="trackTagsSum">關鍵字標籤</summary><div id="trackTags"></div></details>
-          <a class="dl-link" href="https://github.com/Adakuo616/Research/edit/HEAD/config/sources.json" target="_blank" rel="noopener">直接編輯設定檔 ↗</a>
+          <a class="dl-link" id="cfgEditLink" href="https://github.com/Adakuo616/Research/blob/claude/quirky-faraday-2lk8w8/config/sources.json" target="_blank" rel="noopener">直接編輯設定檔 ↗</a>
         </div>
       </aside>
     </div>
@@ -721,6 +733,22 @@
     </div>
 
     <div class="scholar-grid" id="scholarGrid"></div>
+
+    <form class="add-sch" id="addSchForm" novalidate>
+      <div class="add-sch-head">
+        <h3>＋ 新增追蹤學者</h3>
+        <p>填好後按「送到 GitHub 加入」，會開啟一張預先填好的 GitHub Issue，按 Submit 即可。GitHub 每日更新會自動抓這位學者的著作，幾分鐘後出現在 GitHub 版儀表板。需要用儲存庫擁有者的帳號送出。</p>
+      </div>
+      <div class="add-sch-fields">
+        <label>顯示名稱<input id="addSchName" type="text" placeholder="例如 牛一峰 Yi-Feng Niu"></label>
+        <label>論文上的英文姓名<input id="addSchEn" type="text" placeholder="例如 Yi-Feng Niu"></label>
+        <label>ORCID（選填，建議填，可避免同名誤判）<input id="addSchOrcid" type="text" placeholder="0000-0000-0000-0000"></label>
+      </div>
+      <div class="add-sch-foot">
+        <p class="add-sch-err" id="addSchErr" hidden></p>
+        <a class="add-sch-btn" id="addSchBtn" href="https://github.com/Adakuo616/Research/issues/new?template=add-source.yml&amp;kind=%E5%AD%B8%E8%80%85" target="_blank" rel="noopener">送到 GitHub 加入 ↗</a>
+      </div>
+    </form>
 
     <div id="pubBlocks"></div>
 
@@ -3713,6 +3741,28 @@ const DEEP_ARTICLES = [
   renderDeepList();
 
   // ---------- footer timestamp ----------
+  // ---------- add scholar -> prefilled GitHub issue ----------
+  (function(){
+    var form = document.getElementById('addSchForm'), btn = document.getElementById('addSchBtn'), err = document.getElementById('addSchErr');
+    function build(){
+      var name = document.getElementById('addSchName').value.trim();
+      var en = document.getElementById('addSchEn').value.trim();
+      var orcid = document.getElementById('addSchOrcid').value.trim().replace(/^https?:\/\/orcid\.org\//, '');
+      if(!name || !en) return {err: '請填顯示名稱與論文上的英文姓名。'};
+      if(orcid && !/^\d{4}-\d{4}-\d{4}-\d{3}[\dXx]$/.test(orcid)) return {err: 'ORCID 格式應為 0000-0000-0000-000X。'};
+      var q = new URLSearchParams({template: 'add-source.yml', kind: '學者', title: '新增追蹤：學者 ' + name, scholar: name, author: en});
+      if(orcid) q.set('orcid', orcid);
+      return {url: 'https://github.com/Adakuo616/Research/issues/new?' + q.toString()};
+    }
+    form.addEventListener('submit', function(e){ e.preventDefault(); });
+    form.addEventListener('input', function(){ var r = build(); err.hidden = true; if(r.url) btn.href = r.url; });
+    btn.addEventListener('click', function(e){
+      var r = build();
+      if(!r.url){ e.preventDefault(); err.textContent = r.err; err.hidden = false; }
+      else btn.href = r.url;
+    });
+  })();
+
   document.getElementById('genTime').textContent = "本頁最後整理：2026-11-04（Asia/Taipei）／本次執行環境之網路政策封鎖 Google Scholar 與各出版社網站（scholar.google.com、sciencedirect.com、link.springer.com、journals.sagepub.com、tandfonline.com、emerald.com、aisel.aisnet.org、api.crossref.org），且 Claude in Chrome 未連線，僅能以 WebSearch 查找；距上次整理（2026-11-02）僅 2 天，WebSearch 未能查證任何符合關鍵字且日期確定之新文章或學者新著作，故本週期新增 0 篇期刊文章、0 篇學者著作（不加入未經查證之條目）；學者卡片之引用數／H-index／i10-index 無法存取個人頁面，沿用上次數值。本次依使用者研究方向（Agent-based 隨機流網路可靠度）新增 7 篇 Agent 核心文獻深度分析，見「深度文獻分析」分頁最前方。";
 
 })();
@@ -3875,6 +3925,8 @@ const DEEP_ARTICLES = [
     if(!r.url){ e.preventDefault(); trErr.textContent = r.err; trErr.hidden = false; }
   });
 
+  var branch = D.meta.branch || 'claude/quirky-faraday-2lk8w8';
+  document.getElementById('cfgEditLink').href = REPO + '/edit/' + branch + '/config/sources.json';
   var gt = document.getElementById('genTime');
   if(gt) gt.textContent = '每日資料最後更新：' + D.meta.updated.replace('T', ' ').slice(0, 16) + '（Asia/Taipei，來源 Crossref／OpenAlex，GitHub Actions 自動執行）。「期刊精選」「深度文獻分析」「Agent 研究脈絡」為人工整理內容，最後整理於 2026-11-04。';
   drawMine(); syncForm(); render();

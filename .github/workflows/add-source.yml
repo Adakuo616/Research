@@ -2,7 +2,7 @@ name: Add journal or keyword from issue
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [opened]
 
 permissions:
   contents: write
@@ -13,7 +13,7 @@ jobs:
   apply:
     # Only the repository owner can change what the radar tracks.
     if: >-
-      contains(github.event.issue.labels.*.name, 'radar-source') &&
+      startsWith(github.event.issue.title, '新增追蹤') &&
       github.event.issue.user.login == github.repository_owner
     runs-on: ubuntu-latest
     steps:

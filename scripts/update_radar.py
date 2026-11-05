@@ -423,6 +423,7 @@ def main():
 
     out = {
         "meta": {"updated": now.isoformat(timespec="minutes"), "since": since,
+                 "branch": os.environ.get("GITHUB_REF_NAME") or prev.get("meta", {}).get("branch", ""),
                  "new_today": len(new_items), "summarised": n_sum, "total": len(feed)},
         "sources": {"tags": cfg["tags"], "journals": [{"id": j["id"], "name": j["name"]} for j in cfg["journals"]],
                     "scholars": [{"key": s["key"], "name": s["name"]} for s in cfg["scholars"]]},
