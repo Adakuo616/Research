@@ -438,6 +438,12 @@
   .tp-cited{font-size:11px;padding:2px 9px;border-radius:999px;background:var(--good-soft);color:var(--good);}
   .tp-note{font-size:12px;color:var(--text-3);margin-top:14px;}
 
+  .deep-mode{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);margin:0 0 16px;}
+  .deep-mode button{font:inherit;font-size:13.5px;font-weight:600;padding:7px 16px;border-radius:999px;border:none;background:none;color:var(--text-2);cursor:pointer;}
+  .deep-mode button.on{background:var(--accent);color:var(--accent-ink);}
+  .deep-mode button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .pub-who{font-size:11px;padding:1px 9px;border-radius:999px;background:var(--surface);border:1px solid var(--text-3);color:var(--text);white-space:nowrap;}
+
   footer{
     margin-top:40px;padding-top:22px;border-top:1px solid var(--border);
     font-size:12px;color:var(--text-3);
@@ -816,6 +822,29 @@
       <p class="deep-note">誠信聲明：多數期刊全文有出版社付費牆，本分析已逐篇嘗試開啟全文／摘要／highlights，「已閱全文」標記代表取得摘要以外的實質內容；查不到的欄位一律標註「摘要／可讀全文未提及此項，需查閱完整全文」，不會編造內容。</p>
     </div>
 
+    <div class="deep-mode" role="tablist" aria-label="檢視">
+      <button type="button" class="on" data-mode="analysis" id="modeAnalysis">深度分析</button>
+      <button type="button" data-mode="pubs" id="modePubs">學者著作總覽</button>
+    </div>
+
+    <div id="deepPubsView" hidden>
+      <p class="tp-sub" id="pubSub"></p>
+      <div class="tp-tools">
+        <input class="search" type="search" id="pubSearch" placeholder="搜尋標題、作者、期刊…" aria-label="搜尋學者著作">
+        <select class="deep-sort" id="pubSort" aria-label="排序">
+          <option value="year-desc">年代：新 → 舊</option>
+          <option value="year-asc">年代：舊 → 新</option>
+          <option value="cites">引用數：高 → 低</option>
+        </select>
+        <span class="deep-count mono" id="pubCount"></span>
+      </div>
+      <div class="deep-filter-row"><span class="deep-filter-label">主題</span><div class="filter-bar" id="pubTopicBar" style="margin-bottom:0;"></div></div>
+      <div class="deep-filter-row"><span class="deep-filter-label">學者</span><div class="filter-bar" id="pubScholarBar" style="margin-bottom:0;"></div></div>
+      <div id="pubList"></div>
+      <p class="tp-note">同一篇論文由多位追蹤學者共同發表時只列一次，並標出所有參與的追蹤學者。前 4 位學者為人工整理清單加上 2025 年後新論文；其餘學者依 ORCID 或姓名從 Crossref 抓取。主題依英文標題自動分類，一篇可屬多個主題。</p>
+    </div>
+
+    <div id="deepAnalysisView">
     <div class="deep-toolbar">
       <input class="search" type="text" placeholder="搜尋標題、期刊、關鍵字…" id="deepSearch"/>
       <select class="deep-sort" id="deepSort" aria-label="排序">
@@ -830,6 +859,7 @@
       <span class="deep-count mono" id="deepCount"></span>
     </div>
     <div id="deepList"></div>
+    </div>
   </section>
 
   <footer>
@@ -3850,6 +3880,83 @@ const DEEP_ARTICLES = [
     card.classList.toggle('open', deepOpenState[id]);
   });
   renderDeepList();
+
+  // ---------- merged scholar publications (deep tab, second view) ----------
+  (function(){
+    var normT = function(t){ return String(t).toLowerCase().replace(/[^a-z0-9]+/g, ''); };
+    var shortName = function(n){ var m = String(n).match(/^([\u3400-\u9fff]+)/); return m ? m[1] : n; };
+    var merged = {}, order = [];
+    SCHOLARS.forEach(function(s){
+      s.data().forEach(function(r){
+        var k = normT(r[1]);
+        if(!k) return;
+        if(!merged[k]){ merged[k] = {y: r[0], ti: r[1], au: r[2], ve: String(r[3]).replace(/&amp;/g, '&'), ci: r[4] || 0, who: []}; order.push(k); }
+        var m = merged[k];
+        if((r[4] || 0) > m.ci) m.ci = r[4];
+        if(m.who.indexOf(s.key) === -1) m.who.push(s.key);
+      });
+    });
+    var PUBS = order.map(function(k){ return merged[k]; });
+    var nameOf = {}; SCHOLARS.forEach(function(s){ nameOf[s.key] = shortName(s.name); });
+    var topicsOf = function(p){
+      if(p._t) return p._t;
+      var t = p.ti.toLowerCase();
+      var out = DEEP_TOPICS.filter(function(tp){ return tp.kw.some(function(k){ return t.indexOf(k) !== -1; }); }).map(function(tp){ return tp.k; });
+      p._t = out.length ? out : ['other'];
+      return p._t;
+    };
+    var raw = SCHOLARS.reduce(function(n, s){ return n + s.data().length; }, 0);
+    document.getElementById('pubSub').textContent = SCHOLARS.length + ' 位學者共 ' + raw + ' 筆著作，去除共同著作重複後為 ' + PUBS.length + ' 篇。';
+    var tc = {}; PUBS.forEach(function(p){ topicsOf(p).forEach(function(k){ tc[k] = (tc[k] || 0) + 1; }); });
+    var topic = 'all', who = 'all';
+    var tBar = document.getElementById('pubTopicBar'), sBar = document.getElementById('pubScholarBar');
+    tBar.innerHTML = '<button class="chip on" data-t="all" type="button">全部主題</button>' + DEEP_TOPICS.concat([{k: 'other'}]).filter(function(tp){ return tc[tp.k]; })
+      .map(function(tp){ return '<button class="chip" data-t="'+tp.k+'" type="button">'+DEEP_TOPIC_LABEL[tp.k]+' '+tc[tp.k]+'</button>'; }).join('');
+    sBar.innerHTML = '<button class="chip on" data-s="all" type="button">全部學者</button>' + SCHOLARS.map(function(s){
+      var n = PUBS.filter(function(p){ return p.who.indexOf(s.key) !== -1; }).length;
+      return '<button class="chip" data-s="'+s.key+'" type="button">'+shortName(s.name)+' '+n+'</button>'; }).join('');
+    tBar.addEventListener('click', function(e){ var c = e.target.closest('.chip'); if(!c) return; topic = c.dataset.t; tBar.querySelectorAll('.chip').forEach(function(x){ x.classList.toggle('on', x === c); }); draw(); });
+    sBar.addEventListener('click', function(e){ var c = e.target.closest('.chip'); if(!c) return; who = c.dataset.s; sBar.querySelectorAll('.chip').forEach(function(x){ x.classList.toggle('on', x === c); }); draw(); });
+    ['pubSearch', 'pubSort'].forEach(function(id){ var el = document.getElementById(id); el.addEventListener('input', draw); el.addEventListener('change', draw); });
+    var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
+    var drawn = false;
+    function draw(){
+      drawn = true;
+      var q = document.getElementById('pubSearch').value.trim().toLowerCase(), sort = document.getElementById('pubSort').value;
+      var rows = PUBS.filter(function(p){
+        if(topic !== 'all' && topicsOf(p).indexOf(topic) === -1) return false;
+        if(who !== 'all' && p.who.indexOf(who) === -1) return false;
+        if(q && (p.ti + ' ' + p.au + ' ' + p.ve).toLowerCase().indexOf(q) === -1) return false;
+        return true;
+      }).map(function(p, i){ return [p, i]; }).sort(function(a, b){
+        if(sort === 'cites') return (b[0].ci - a[0].ci) || a[1] - b[1];
+        var d = (a[0].y || 0) - (b[0].y || 0);
+        return (sort === 'year-asc' ? d : -d) || a[1] - b[1];
+      }).map(function(x){ return x[0]; });
+      document.getElementById('pubCount').textContent = rows.length + ' / ' + PUBS.length + ' 篇';
+      var last = null, html = '';
+      rows.forEach(function(p){
+        if(sort !== 'cites' && p.y !== last){ last = p.y; html += '<div class="deep-year">' + p.y + ' <span>' + rows.filter(function(x){ return x.y === p.y; }).length + ' 篇</span></div>'; }
+        html += '<div class="tp-item"><div class="tp-t">' + esc(p.ti) + '</div>'
+          + '<div class="tp-c"><b>' + p.ci + '</b>引用</div>'
+          + '<div class="tp-m">' + esc(p.au) + ' · ' + esc(p.ve) + (sort === 'cites' ? ' · ' + p.y : '') + '</div>'
+          + '<div class="tp-tags">' + topicsOf(p).map(function(k){ return '<span class="topic-tag">' + DEEP_TOPIC_LABEL[k] + '</span>'; }).join('')
+          + p.who.map(function(k){ return '<span class="pub-who">' + esc(nameOf[k]) + '</span>'; }).join('') + '</div></div>';
+      });
+      document.getElementById('pubList').innerHTML = html || '<p class="tp-note">沒有符合條件的著作。</p>';
+    }
+    var modeA = document.getElementById('modeAnalysis'), modeP = document.getElementById('modePubs');
+    modeA.textContent = '深度分析 ' + DEEP_ARTICLES.length + ' 篇';
+    modeP.textContent = '學者著作總覽 ' + PUBS.length + ' 篇';
+    function setMode(m){
+      modeA.classList.toggle('on', m === 'analysis'); modeP.classList.toggle('on', m === 'pubs');
+      document.getElementById('deepAnalysisView').hidden = m !== 'analysis';
+      document.getElementById('deepPubsView').hidden = m !== 'pubs';
+      if(m === 'pubs' && !drawn) draw();
+    }
+    modeA.addEventListener('click', function(){ setMode('analysis'); });
+    modeP.addEventListener('click', function(){ setMode('pubs'); });
+  })();
 
   // ---------- footer timestamp ----------
   // ---------- topic libraries ----------
