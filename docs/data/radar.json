@@ -1,11 +1,11 @@
 {
  "meta": {
-  "updated": "2026-11-15T09:51+08:00",
-  "since": "2026-11-08",
+  "updated": "2026-11-16T09:59+08:00",
+  "since": "2026-11-09",
   "branch": "claude/quirky-faraday-2lk8w8",
-  "new_today": 15,
+  "new_today": 2,
   "summarised": 0,
-  "total": 159
+  "total": 161
  },
  "sources": {
   "tags": [
@@ -201,6 +201,40 @@
   ]
  },
  "feed": [
+  {
+   "doi": "10.1016/j.matcom.2026.11.015",
+   "url": "https://doi.org/10.1016/j.matcom.2026.11.015",
+   "j": "mcs",
+   "journal": "Mathematics and Computers in Simulation",
+   "title": "Entropy and Mean Absolute Deviation Based Multi-Objective Stochastic Portfolio Optimization",
+   "authors": "Tusan DERYA, Kumru Didem ATALAY, İÇ Yusuf Tansel",
+   "online": "2026-11-15",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "simulation"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-16"
+  },
+  {
+   "doi": "10.1016/j.ress.2026.113861",
+   "url": "https://doi.org/10.1016/j.ress.2026.113861",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "Mission Reliability and Cost of Unmanned Aerial Vehicle Inspection Systems with an Adaptive Backup Mechanism",
+   "authors": "Yuchang Mo, Tiantian Gai, Wen Wu, Mirlan Chynybaev, Xi He, Shuaisen Ma",
+   "online": "2026-11-15",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "reliability"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-16"
+  },
   {
    "doi": "10.1016/j.simpat.2026.103382",
    "url": "https://doi.org/10.1016/j.simpat.2026.103382",
@@ -2956,7 +2990,7 @@
    "name": "林一貴 Yi-Kuei Lin",
    "orcid": "0000-0001-8049-5696",
    "stats": {
-    "cites": 5057,
+    "cites": 5058,
     "h": 35,
     "i10": 142,
     "works": 314,
@@ -3669,7 +3703,7 @@
      "title": "Reliability of time-constrained multi-state network susceptible to correlated component faults",
      "authors": "YK Lin, L Fiondella, PC Chang",
      "venue": "Annals of Operations Research",
-     "cites": 15,
+     "cites": 16,
      "doi": "https://doi.org/10.1007/s10479-019-03428-3",
      "first_seen": ""
     },
@@ -4386,21 +4420,21 @@
     {
      "year": 2013,
      "date": "2013-03-01",
-     "title": "A Novel Reliability Evaluation Technique for Stochastic-Flow Manufacturing Networks With Multiple Production Lines",
-     "authors": "YK Lin, PC Chang",
-     "venue": "IEEE Transactions on Reliability",
-     "cites": 43,
-     "doi": "https://doi.org/10.1109/tr.2012.2220898",
-     "first_seen": ""
-    },
-    {
-     "year": 2013,
-     "date": "2013-03-01",
      "title": "Backup reliability of stochastic imperfect-node computer networks subject to packet accuracy rate and time constraints",
      "authors": "YK Lin, CF Huang",
      "venue": "International Journal of Computer Mathematics",
      "cites": 1,
      "doi": "https://doi.org/10.1080/00207160.2012.736616",
+     "first_seen": ""
+    },
+    {
+     "year": 2013,
+     "date": "2013-03-01",
+     "title": "A Novel Reliability Evaluation Technique for Stochastic-Flow Manufacturing Networks With Multiple Production Lines",
+     "authors": "YK Lin, PC Chang",
+     "venue": "IEEE Transactions on Reliability",
+     "cites": 43,
+     "doi": "https://doi.org/10.1109/tr.2012.2220898",
      "first_seen": ""
     },
     {
@@ -4546,6 +4580,16 @@
     {
      "year": 2012,
      "date": "2012-12-01",
+     "title": "Search for All Minimal Paths in a General Large Flow Network",
+     "authors": "Shin-Guang Chen, Yi-Kuei Lin",
+     "venue": "IEEE Transactions on Reliability",
+     "cites": 82,
+     "doi": "https://doi.org/10.1109/tr.2012.2220897",
+     "first_seen": ""
+    },
+    {
+     "year": 2012,
+     "date": "2012-12-01",
      "title": "Reliability evaluation of a computer network in cloud computing environment subject to maintenance budget",
      "authors": "YK Lin, PC Chang",
      "venue": "Applied Mathematics and Computation",
@@ -4561,16 +4605,6 @@
      "venue": "Computers & Industrial Engineering",
      "cites": 30,
      "doi": "https://doi.org/10.1016/j.cie.2012.06.023",
-     "first_seen": ""
-    },
-    {
-     "year": 2012,
-     "date": "2012-12-01",
-     "title": "Search for All Minimal Paths in a General Large Flow Network",
-     "authors": "Shin-Guang Chen, Yi-Kuei Lin",
-     "venue": "IEEE Transactions on Reliability",
-     "cites": 82,
-     "doi": "https://doi.org/10.1109/tr.2012.2220897",
      "first_seen": ""
     },
     {
@@ -5519,7 +5553,7 @@
    "name": "張秉宸 Ping-Chen Chang",
    "orcid": "0000-0001-5563-2580",
    "stats": {
-    "cites": 1333,
+    "cites": 1334,
     "h": 22,
     "i10": 43,
     "works": 106,
@@ -5742,7 +5776,7 @@
      "title": "Reliability of time-constrained multi-state network susceptible to correlated component faults",
      "authors": "YK Lin, L Fiondella, PC Chang",
      "venue": "Annals of Operations Research",
-     "cites": 15,
+     "cites": 16,
      "doi": "https://doi.org/10.1007/s10479-019-03428-3",
      "first_seen": ""
     },
@@ -5868,6 +5902,16 @@
     },
     {
      "year": 2015,
+     "date": "2015-12-01",
+     "title": "Confidence-Based Reliability Evaluation of Multistate Production Network with Process Improvement",
+     "authors": "SW Sun, PC Chang, YK Lin",
+     "venue": "International Journal of Reliability, Quality and Safety Engineering",
+     "cites": 2,
+     "doi": "https://doi.org/10.1142/s021853931550028x",
+     "first_seen": "2026-11-16"
+    },
+    {
+     "year": 2015,
      "date": "2015-11-21",
      "title": "System Reliability Evaluation of a Multistate Manufacturing Network",
      "authors": "YK Lin, PC Chang, CF Huang",
@@ -5989,21 +6033,21 @@
     {
      "year": 2013,
      "date": "2013-03-01",
-     "title": "A Novel Reliability Evaluation Technique for Stochastic-Flow Manufacturing Networks With Multiple Production Lines",
-     "authors": "YK Lin, PC Chang",
-     "venue": "IEEE Transactions on Reliability",
-     "cites": 43,
-     "doi": "https://doi.org/10.1109/tr.2012.2220898",
-     "first_seen": ""
-    },
-    {
-     "year": 2013,
-     "date": "2013-03-01",
      "title": "Graphical-based reliability evaluation of multiple distinct production lines",
      "authors": "YK Lin, PC Chang",
      "venue": "Journal of Systems Science and Systems Engineering",
      "cites": 3,
      "doi": "https://doi.org/10.1007/s11518-013-5208-7",
+     "first_seen": ""
+    },
+    {
+     "year": 2013,
+     "date": "2013-03-01",
+     "title": "A Novel Reliability Evaluation Technique for Stochastic-Flow Manufacturing Networks With Multiple Production Lines",
+     "authors": "YK Lin, PC Chang",
+     "venue": "IEEE Transactions on Reliability",
+     "cites": 43,
+     "doi": "https://doi.org/10.1109/tr.2012.2220898",
      "first_seen": ""
     },
     {
@@ -7044,16 +7088,6 @@
     },
     {
      "year": 2015,
-     "date": "2015-11-21",
-     "title": "System Reliability Evaluation of a Multistate Manufacturing Network",
-     "authors": "YK Lin, PC Chang, CF Huang",
-     "venue": "Springer Series in Reliability Engineering Quality and Reliability Management and Its Applications",
-     "cites": 3,
-     "doi": "https://doi.org/10.1007/978-1-4471-6778-5_5",
-     "first_seen": ""
-    },
-    {
-     "year": 2015,
      "date": "2015-07-14",
      "title": "Reliability of a Multi-State Computer Network ThroughkMinimal Paths Within Tolerable Error Rate and Time Threshold",
      "authors": "YK Lin, CF Huang",
@@ -7781,7 +7815,7 @@
    "name": "牛一峰 Yi-Feng Niu",
    "orcid": "0000-0002-7246-8089",
    "stats": {
-    "cites": 760,
+    "cites": 761,
     "h": 16,
     "i10": 24,
     "works": 48,
@@ -7934,7 +7968,7 @@
      "title": "A reliability index to measure multi-state flow network considering capacity restoration level and maintenance cost",
      "authors": "YF Niu, RH Zhou, XZ Xu, HY Xiang",
      "venue": "Reliability Engineering & System Safety",
-     "cites": 12,
+     "cites": 13,
      "doi": "https://doi.org/10.1016/j.ress.2024.110209",
      "first_seen": ""
     },
@@ -8964,21 +8998,21 @@
     {
      "year": 2019,
      "date": "2019-11-01",
-     "title": "Simplified swarm optimization for optimal deployment of fog computing system of industry 4.0 smart factory",
-     "authors": "WC Yeh, CM Lai, JY Tsai",
-     "venue": "Journal of Physics: Conference Series",
-     "cites": 5,
-     "doi": "https://doi.org/10.1088/1742-6596/1411/1/012005",
-     "first_seen": ""
-    },
-    {
-     "year": 2019,
-     "date": "2019-11-01",
      "title": "Fog computing task scheduling optimization based on multi-objective simplified swarm optimization",
      "authors": "WC Yeh, CM Lai, KC Tseng",
      "venue": "Journal of Physics: Conference Series",
      "cites": 11,
      "doi": "https://doi.org/10.1088/1742-6596/1411/1/012007",
+     "first_seen": ""
+    },
+    {
+     "year": 2019,
+     "date": "2019-11-01",
+     "title": "Simplified swarm optimization for optimal deployment of fog computing system of industry 4.0 smart factory",
+     "authors": "WC Yeh, CM Lai, JY Tsai",
+     "venue": "Journal of Physics: Conference Series",
+     "cites": 5,
+     "doi": "https://doi.org/10.1088/1742-6596/1411/1/012005",
      "first_seen": ""
     },
     {
@@ -9670,16 +9704,6 @@
      "cites": 2,
      "doi": "https://doi.org/10.1007/978-94-007-2598-0_62",
      "first_seen": ""
-    },
-    {
-     "year": 2011,
-     "date": "2011-01-01",
-     "title": "Feasible prediction in S-system models of genetic networks",
-     "authors": "WC Yeh, WB Lin, TJ Hsieh, SL Liu",
-     "venue": "Expert Systems with Applications",
-     "cites": 2,
-     "doi": "https://doi.org/10.1016/j.eswa.2010.06.042",
-     "first_seen": "2026-11-13"
     },
     {
      "year": 2010,
