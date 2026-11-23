@@ -1,9 +1,9 @@
 {
  "meta": {
-  "updated": "2026-11-22T10:12+08:00",
-  "since": "2026-11-15",
+  "updated": "2026-11-23T10:42+08:00",
+  "since": "2026-11-16",
   "branch": "claude/quirky-faraday-2lk8w8",
-  "new_today": 9,
+  "new_today": 0,
   "summarised": 0,
   "total": 241
  },
@@ -4899,16 +4899,6 @@
     },
     {
      "year": 2021,
-     "date": "2021-06-01",
-     "title": "Method for integrating classical and network reliability: A time varying network reliability evaluation",
-     "authors": "P Chang, D Huang, L Fiondella, Y Lin, K Lai",
-     "venue": "Quality and Reliability Engineering International",
-     "cites": 5,
-     "doi": "https://doi.org/10.1002/qre.2932",
-     "first_seen": ""
-    },
-    {
-     "year": 2021,
      "date": "2021-01-21",
      "title": "Reliability of spare routing via intersectional minimal paths within budget and time constraints by simulation",
      "authors": "YK Lin, CF Huang, CC Chang",
@@ -5800,21 +5790,21 @@
     {
      "year": 2013,
      "date": "2013-03-01",
-     "title": "Graphical-based reliability evaluation of multiple distinct production lines",
-     "authors": "YK Lin, PC Chang",
-     "venue": "Journal of Systems Science and Systems Engineering",
-     "cites": 3,
-     "doi": "https://doi.org/10.1007/s11518-013-5208-7",
-     "first_seen": ""
-    },
-    {
-     "year": 2013,
-     "date": "2013-03-01",
      "title": "A Novel Reliability Evaluation Technique for Stochastic-Flow Manufacturing Networks With Multiple Production Lines",
      "authors": "YK Lin, PC Chang",
      "venue": "IEEE Transactions on Reliability",
      "cites": 43,
      "doi": "https://doi.org/10.1109/tr.2012.2220898",
+     "first_seen": ""
+    },
+    {
+     "year": 2013,
+     "date": "2013-03-01",
+     "title": "Graphical-based reliability evaluation of multiple distinct production lines",
+     "authors": "YK Lin, PC Chang",
+     "venue": "Journal of Systems Science and Systems Engineering",
+     "cites": 3,
+     "doi": "https://doi.org/10.1007/s11518-013-5208-7",
      "first_seen": ""
     },
     {
@@ -5970,6 +5960,16 @@
     {
      "year": 2012,
      "date": "2012-12-01",
+     "title": "Search for All Minimal Paths in a General Large Flow Network",
+     "authors": "Shin-Guang Chen, Yi-Kuei Lin",
+     "venue": "IEEE Transactions on Reliability",
+     "cites": 82,
+     "doi": "https://doi.org/10.1109/tr.2012.2220897",
+     "first_seen": ""
+    },
+    {
+     "year": 2012,
+     "date": "2012-12-01",
      "title": "Reliability evaluation of a computer network in cloud computing environment subject to maintenance budget",
      "authors": "YK Lin, PC Chang",
      "venue": "Applied Mathematics and Computation",
@@ -5985,16 +5985,6 @@
      "venue": "Computers & Industrial Engineering",
      "cites": 30,
      "doi": "https://doi.org/10.1016/j.cie.2012.06.023",
-     "first_seen": ""
-    },
-    {
-     "year": 2012,
-     "date": "2012-12-01",
-     "title": "Search for All Minimal Paths in a General Large Flow Network",
-     "authors": "Shin-Guang Chen, Yi-Kuei Lin",
-     "venue": "IEEE Transactions on Reliability",
-     "cites": 82,
-     "doi": "https://doi.org/10.1109/tr.2012.2220897",
      "first_seen": ""
     },
     {
@@ -6440,21 +6430,21 @@
     {
      "year": 2010,
      "date": "2010-03-01",
-     "title": "Reliability of $k$ Separate Minimal Paths Under Both Time and Budget Constraints",
-     "authors": "Yi-Kuei Lin",
-     "venue": "IEEE Transactions on Reliability",
-     "cites": 12,
-     "doi": "https://doi.org/10.1109/tr.2009.2035794",
-     "first_seen": ""
-    },
-    {
-     "year": 2010,
-     "date": "2010-03-01",
      "title": "A novel algorithm to evaluate the performance of stochastic transportation systems",
      "authors": "YK Lin",
      "venue": "Expert Systems with Applications",
      "cites": 11,
      "doi": "https://doi.org/10.1016/j.eswa.2009.05.080",
+     "first_seen": ""
+    },
+    {
+     "year": 2010,
+     "date": "2010-03-01",
+     "title": "Reliability of $k$ Separate Minimal Paths Under Both Time and Budget Constraints",
+     "authors": "Yi-Kuei Lin",
+     "venue": "IEEE Transactions on Reliability",
+     "cites": 12,
+     "doi": "https://doi.org/10.1109/tr.2009.2035794",
      "first_seen": ""
     },
     {
@@ -7433,21 +7423,21 @@
     {
      "year": 2013,
      "date": "2013-03-01",
-     "title": "Graphical-based reliability evaluation of multiple distinct production lines",
-     "authors": "YK Lin, PC Chang",
-     "venue": "Journal of Systems Science and Systems Engineering",
-     "cites": 3,
-     "doi": "https://doi.org/10.1007/s11518-013-5208-7",
-     "first_seen": ""
-    },
-    {
-     "year": 2013,
-     "date": "2013-03-01",
      "title": "A Novel Reliability Evaluation Technique for Stochastic-Flow Manufacturing Networks With Multiple Production Lines",
      "authors": "YK Lin, PC Chang",
      "venue": "IEEE Transactions on Reliability",
      "cites": 43,
      "doi": "https://doi.org/10.1109/tr.2012.2220898",
+     "first_seen": ""
+    },
+    {
+     "year": 2013,
+     "date": "2013-03-01",
+     "title": "Graphical-based reliability evaluation of multiple distinct production lines",
+     "authors": "YK Lin, PC Chang",
+     "venue": "Journal of Systems Science and Systems Engineering",
+     "cites": 3,
+     "doi": "https://doi.org/10.1007/s11518-013-5208-7",
      "first_seen": ""
     },
     {
@@ -7573,21 +7563,21 @@
     {
      "year": 2012,
      "date": "2012-06-01",
-     "title": "Evaluation of System Reliabilities for a Maintainable Stochastic-Flow Network",
-     "authors": "YK Lin, PC Chang",
-     "venue": "IEEE Transactions on Reliability",
-     "cites": 20,
-     "doi": "https://doi.org/10.1109/tr.2012.2196170",
-     "first_seen": ""
-    },
-    {
-     "year": 2012,
-     "date": "2012-06-01",
      "title": "ESTIMATED AND ACCURATE SYSTEM RELIABILITIES OF A MAINTAINABLE COMPUTER NETWORK SUBJECT TO MAINTENANCE BUDGET",
      "authors": "YK LIN, PC CHANG",
      "venue": "Asia-Pacific Journal of Operational Research",
      "cites": 2,
      "doi": "https://doi.org/10.1142/s0217595912400210",
+     "first_seen": ""
+    },
+    {
+     "year": 2012,
+     "date": "2012-06-01",
+     "title": "Evaluation of System Reliabilities for a Maintainable Stochastic-Flow Network",
+     "authors": "YK Lin, PC Chang",
+     "venue": "IEEE Transactions on Reliability",
+     "cites": 20,
+     "doi": "https://doi.org/10.1109/tr.2012.2196170",
      "first_seen": ""
     },
     {
@@ -8762,22 +8752,22 @@
     {
      "year": 2027,
      "date": "2027-01-01",
-     "title": "A stochastic approach to evaluating global supply chain reliability under tariff and carbon emission considerations",
-     "authors": "DH Huang",
-     "venue": "Reliability Engineering & System Safety",
-     "cites": 2,
-     "doi": "https://doi.org/10.1016/j.ress.2026.113121",
-     "first_seen": ""
-    },
-    {
-     "year": 2027,
-     "date": "2027-01-01",
      "title": "Surrogate-assisted priority ordering optimization for joint reliability in multi-state flow networks",
      "authors": "DH Huang",
      "venue": "Engineering Applications of Artificial Intelligence",
      "cites": 0,
      "doi": "https://doi.org/10.1016/j.engappai.2026.116689",
      "first_seen": "2026-11-19"
+    },
+    {
+     "year": 2027,
+     "date": "2027-01-01",
+     "title": "A stochastic approach to evaluating global supply chain reliability under tariff and carbon emission considerations",
+     "authors": "DH Huang",
+     "venue": "Reliability Engineering & System Safety",
+     "cites": 2,
+     "doi": "https://doi.org/10.1016/j.ress.2026.113121",
+     "first_seen": ""
     },
     {
      "year": 2027,
@@ -10337,16 +10327,6 @@
     },
     {
      "year": 2020,
-     "date": "2020-11-27",
-     "title": "Using Simplified Swarm Optimization on Multiloop Fuzzy PID Controller Tuning Design for Flow and Temperature Control System",
-     "authors": "TY Wu, YZ Jiang, YZ Su, WC Yeh",
-     "venue": "Applied Sciences",
-     "cites": 28,
-     "doi": "https://doi.org/10.3390/app10238472",
-     "first_seen": "2026-11-21"
-    },
-    {
-     "year": 2020,
      "date": "2020-11-24",
      "title": "Predicting and Modeling Wildfire Propagation Areas with BAT and Maximum-State PageRank",
      "authors": "WC Yeh, CC Kuo",
@@ -10584,6 +10564,16 @@
      "cites": 36,
      "doi": "https://doi.org/10.1016/j.asoc.2017.04.030",
      "first_seen": ""
+    },
+    {
+     "year": 2017,
+     "date": "2017-01-31",
+     "title": "Simplified swarm optimisation for the solar cell models parameter estimation problem",
+     "authors": "W Yeh, P Lin, C Huang",
+     "venue": "IET Renewable Power Generation",
+     "cites": 27,
+     "doi": "https://doi.org/10.1049/iet-rpg.2016.0473",
+     "first_seen": "2026-11-23"
     },
     {
      "year": 2017,
@@ -11508,21 +11498,21 @@
     {
      "year": 2002,
      "date": "2002-11-01",
-     "title": "Multistate-node acyclic network reliability evaluation",
-     "authors": "WC Yeh",
-     "venue": "Reliability Engineering & System Safety",
-     "cites": 21,
-     "doi": "https://doi.org/10.1016/s0951-8320(02)00114-x",
-     "first_seen": ""
-    },
-    {
-     "year": 2002,
-     "date": "2002-11-01",
      "title": "Search for all d-Mincuts of a limited-flow network",
      "authors": "WC Yeh",
      "venue": "Computers & Operations Research",
      "cites": 41,
      "doi": "https://doi.org/10.1016/s0305-0548(01)00062-4",
+     "first_seen": ""
+    },
+    {
+     "year": 2002,
+     "date": "2002-11-01",
+     "title": "Multistate-node acyclic network reliability evaluation",
+     "authors": "WC Yeh",
+     "venue": "Reliability Engineering & System Safety",
+     "cites": 21,
+     "doi": "https://doi.org/10.1016/s0951-8320(02)00114-x",
      "first_seen": ""
     },
     {
@@ -11578,21 +11568,21 @@
     {
      "year": 2001,
      "date": "2001-01-01",
-     "title": "A simple approach to search for all d-MCs of a limited-flow network",
-     "authors": "WC Yeh",
-     "venue": "Reliability Engineering & System Safety",
-     "cites": 83,
-     "doi": "https://doi.org/10.1016/s0951-8320(00)00070-3",
-     "first_seen": ""
-    },
-    {
-     "year": 2001,
-     "date": "2001-01-01",
      "title": "An efficient branch-and-bound algorithm for the two-machine bicriteria flowshop scheduling problem",
      "authors": "WC Yeh",
      "venue": "Journal of Manufacturing Systems",
      "cites": 20,
      "doi": "https://doi.org/10.1016/s0278-6125(01)80034-0",
+     "first_seen": ""
+    },
+    {
+     "year": 2001,
+     "date": "2001-01-01",
+     "title": "A simple approach to search for all d-MCs of a limited-flow network",
+     "authors": "WC Yeh",
+     "venue": "Reliability Engineering & System Safety",
+     "cites": 83,
+     "doi": "https://doi.org/10.1016/s0951-8320(00)00070-3",
      "first_seen": ""
     },
     {
