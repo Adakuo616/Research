@@ -1,11 +1,11 @@
 {
  "meta": {
-  "updated": "2026-11-23T10:42+08:00",
-  "since": "2026-11-16",
+  "updated": "2026-11-24T13:58+08:00",
+  "since": "2026-11-17",
   "branch": "claude/quirky-faraday-2lk8w8",
-  "new_today": 0,
+  "new_today": 9,
   "summarised": 0,
-  "total": 241
+  "total": 250
  },
  "sources": {
   "tags": [
@@ -201,6 +201,160 @@
   ]
  },
  "feed": [
+  {
+   "doi": "10.1016/j.ress.2026.113945",
+   "url": "https://doi.org/10.1016/j.ress.2026.113945",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "Integrated Lifetime Fragility and Risk Evaluation of Existing Steel MRFs Subjected to Seismic and Corrosive Hazards",
+   "authors": "Devang Bipinchandra Lad, Fabio Freddi, Jayadipta Ghosh",
+   "online": "2026-11-24",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "risk"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-24"
+  },
+  {
+   "doi": "10.1108/imds-09-2025-1233",
+   "url": "https://doi.org/10.1108/imds-09-2025-1233",
+   "j": "imds",
+   "journal": "Industrial Management & Data Systems",
+   "title": "The effect of symbolic language on overfunding in cultural crowdfunding",
+   "authors": "Xiaochen Liu, Lingfei Deng, Xianjiao Wu",
+   "online": "2026-11-23",
+   "published": "2026-11-24",
+   "abstract": "Purpose With the rapid development of the crowdfunding market, traditional performance indicators such as campaign success can no longer fully capture its benefits, as extreme overfunding has become a common phenomenon. This study aims to deepen the understanding of community-driven overfunding in reward-based cultural crowdfunding by examining the role of symbolic language in backers' comments through the lens of collective effervescence theory. Design/methodology/approach We collected data from 852 overfunded projects on Modian, comprising 685,504 backer comments. Ordinary least squares and logistic regression models were employed at both the project and comment levels to investigate how symbolic language in backer communication affects overfunding outcomes. An online between-subject experiment was conducted to validate the theoretical mechanism underlying the impact of symbolic language on overfunding. Findings The results indicate that symbolic language in backers' comments significantly enhances the level of overfunding, particularly when it emerges in the middle to later stages of a campaign. This effect is attributed to behavioral synchronization driven by emotional efferves",
+   "tags": [
+    "pm"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-24"
+  },
+  {
+   "doi": "10.1016/j.ijproman.2026.102942",
+   "url": "https://doi.org/10.1016/j.ijproman.2026.102942",
+   "j": "ijpm",
+   "journal": "International Journal of Project Management",
+   "title": "Beyond Project Delivery: Value Co-Creation and Co-Destruction Through Stakeholder Interactions",
+   "authors": "Erik Humberto Araya Aliaga, Costanza Mariani, Tuomas Ahola, Mauro Mancini",
+   "online": "2026-11-23",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "pm"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-24"
+  },
+  {
+   "doi": "10.1016/j.ress.2026.113876",
+   "url": "https://doi.org/10.1016/j.ress.2026.113876",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "Stage-conditioned physics-residual dynamic graph neural network with adaptive multi-scale temporal fusion for aeroengine remaining useful life prediction",
+   "authors": "Yonghua Jiang, Yize Liu, Linjie Zheng, Chao Tang, Zhilin Dong, Siyu Liu, et al.",
+   "online": "2026-11-23",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "reliability"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-24"
+  },
+  {
+   "doi": "10.1016/j.ress.2026.113887",
+   "url": "https://doi.org/10.1016/j.ress.2026.113887",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "Conditional survival signatures based on minimal path updating for structural and reliability importance analysis",
+   "authors": "Emad Kareem Mutar",
+   "online": "2026-11-23",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "reliability",
+    "sfn"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-24"
+  },
+  {
+   "doi": "10.1016/j.ress.2026.113878",
+   "url": "https://doi.org/10.1016/j.ress.2026.113878",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "An optimal condition based maintenance policy for k-out-of-n systems with multi-level postponed replacement",
+   "authors": "Reza Ahmadi, Amirhossein Sobhani, Mahsa Jamali",
+   "online": "2026-11-23",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "reliability"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-24"
+  },
+  {
+   "doi": "10.1016/j.ress.2026.113942",
+   "url": "https://doi.org/10.1016/j.ress.2026.113942",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "Equivalent static system-based adaptive gradient-enhanced Kriging for time-dependent system reliability analysis",
+   "authors": "Zhi Cao, Chong Wang",
+   "online": "2026-11-23",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "reliability"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-24"
+  },
+  {
+   "doi": "10.1016/j.ress.2026.113881",
+   "url": "https://doi.org/10.1016/j.ress.2026.113881",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "Higher-order heterogeneous coupled cascading failures and robustness analysis in interdependent networks",
+   "authors": "Jiaying Yang, Ying Yang, Jianlin Zhou, An Zeng, Ying Fan",
+   "online": "2026-11-23",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "reliability"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-24"
+  },
+  {
+   "doi": "10.1109/tr.2026.3756650",
+   "url": "https://doi.org/10.1109/tr.2026.3756650",
+   "j": "ietr",
+   "journal": "IEEE Transactions on Reliability",
+   "title": "A Domain-Integrated Meta-Transfer-Based Adversarial Test Sample Generation Method for Cross-Operating-Condition Fault Diagnosis Models",
+   "authors": "Chao Yang, Liang Huang, Kefan Yao, Bofan Zhang, Tao Peng, Chunhua Yang, et al.",
+   "online": "2026-11-23",
+   "published": "2026-01-01",
+   "abstract": "",
+   "tags": [
+    "reliability"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-24"
+  },
   {
    "doi": "10.1108/imds-08-2025-1073",
    "url": "https://doi.org/10.1108/imds-08-2025-1073",
@@ -4370,7 +4524,7 @@
    "name": "林一貴 Yi-Kuei Lin",
    "orcid": "0000-0001-8049-5696",
    "stats": {
-    "cites": 5317,
+    "cites": 5331,
     "h": 36,
     "i10": 150,
     "works": 315,
@@ -4896,6 +5050,16 @@
      "cites": 1,
      "doi": "https://doi.org/10.1177/1748006x211037137",
      "first_seen": ""
+    },
+    {
+     "year": 2021,
+     "date": "2021-06-01",
+     "title": "Method for integrating classical and network reliability: A time varying network reliability evaluation",
+     "authors": "P Chang, D Huang, L Fiondella, Y Lin, K Lai",
+     "venue": "Quality and Reliability Engineering International",
+     "cites": 5,
+     "doi": "https://doi.org/10.1002/qre.2932",
+     "first_seen": "2026-11-24"
     },
     {
      "year": 2021,
@@ -5910,21 +6074,21 @@
     {
      "year": 2013,
      "date": "2013-01-01",
-     "title": "System Reliability and Decision Making for a Production System with Intersectional Lines",
-     "authors": "YK Lin, PC Chang, KJ Hsueh",
-     "venue": "Proceedings of the Institute of Industrial Engineers Asian Conference 2013",
-     "cites": 0,
-     "doi": "https://doi.org/10.1007/978-981-4451-98-7_31",
-     "first_seen": ""
-    },
-    {
-     "year": 2013,
-     "date": "2013-01-01",
      "title": "Reliability-Based Performance Evaluation for a Stochastic Project Network Under Time and Budget Thresholds",
      "authors": "YK Lin, PC Chang, SY Li",
      "venue": "Proceedings of the Institute of Industrial Engineers Asian Conference 2013",
      "cites": 0,
      "doi": "https://doi.org/10.1007/978-981-4451-98-7_30",
+     "first_seen": ""
+    },
+    {
+     "year": 2013,
+     "date": "2013-01-01",
+     "title": "System Reliability and Decision Making for a Production System with Intersectional Lines",
+     "authors": "YK Lin, PC Chang, KJ Hsueh",
+     "venue": "Proceedings of the Institute of Industrial Engineers Asian Conference 2013",
+     "cites": 0,
+     "doi": "https://doi.org/10.1007/978-981-4451-98-7_31",
      "first_seen": ""
     },
     {
@@ -5960,16 +6124,6 @@
     {
      "year": 2012,
      "date": "2012-12-01",
-     "title": "Search for All Minimal Paths in a General Large Flow Network",
-     "authors": "Shin-Guang Chen, Yi-Kuei Lin",
-     "venue": "IEEE Transactions on Reliability",
-     "cites": 82,
-     "doi": "https://doi.org/10.1109/tr.2012.2220897",
-     "first_seen": ""
-    },
-    {
-     "year": 2012,
-     "date": "2012-12-01",
      "title": "Reliability evaluation of a computer network in cloud computing environment subject to maintenance budget",
      "authors": "YK Lin, PC Chang",
      "venue": "Applied Mathematics and Computation",
@@ -5985,6 +6139,16 @@
      "venue": "Computers & Industrial Engineering",
      "cites": 30,
      "doi": "https://doi.org/10.1016/j.cie.2012.06.023",
+     "first_seen": ""
+    },
+    {
+     "year": 2012,
+     "date": "2012-12-01",
+     "title": "Search for All Minimal Paths in a General Large Flow Network",
+     "authors": "Shin-Guang Chen, Yi-Kuei Lin",
+     "venue": "IEEE Transactions on Reliability",
+     "cites": 82,
+     "doi": "https://doi.org/10.1109/tr.2012.2220897",
      "first_seen": ""
     },
     {
@@ -6933,7 +7097,7 @@
    "name": "張秉宸 Ping-Chen Chang",
    "orcid": "0000-0001-5563-2580",
    "stats": {
-    "cites": 1400,
+    "cites": 1403,
     "h": 23,
     "i10": 45,
     "works": 106,
@@ -7148,16 +7312,6 @@
      "venue": "Simulation Modelling Practice and Theory",
      "cites": 22,
      "doi": "https://doi.org/10.1016/j.simpat.2020.102192",
-     "first_seen": ""
-    },
-    {
-     "year": 2020,
-     "date": "2020-08-01",
-     "title": "Methodology for Integrating Conventional and Network Reliability Evaluation",
-     "authors": "CH Huang, PC Chang, YK Lin",
-     "venue": "2020 Asia-Pacific International Symposium on Advanced Reliability and Maintenance Modeling (APARM)",
-     "cites": 0,
-     "doi": "https://doi.org/10.1109/aparm49247.2020.9209386",
      "first_seen": ""
     },
     {
@@ -7423,21 +7577,21 @@
     {
      "year": 2013,
      "date": "2013-03-01",
-     "title": "A Novel Reliability Evaluation Technique for Stochastic-Flow Manufacturing Networks With Multiple Production Lines",
-     "authors": "YK Lin, PC Chang",
-     "venue": "IEEE Transactions on Reliability",
-     "cites": 43,
-     "doi": "https://doi.org/10.1109/tr.2012.2220898",
-     "first_seen": ""
-    },
-    {
-     "year": 2013,
-     "date": "2013-03-01",
      "title": "Graphical-based reliability evaluation of multiple distinct production lines",
      "authors": "YK Lin, PC Chang",
      "venue": "Journal of Systems Science and Systems Engineering",
      "cites": 3,
      "doi": "https://doi.org/10.1007/s11518-013-5208-7",
+     "first_seen": ""
+    },
+    {
+     "year": 2013,
+     "date": "2013-03-01",
+     "title": "A Novel Reliability Evaluation Technique for Stochastic-Flow Manufacturing Networks With Multiple Production Lines",
+     "authors": "YK Lin, PC Chang",
+     "venue": "IEEE Transactions on Reliability",
+     "cites": 43,
+     "doi": "https://doi.org/10.1109/tr.2012.2220898",
      "first_seen": ""
     },
     {
@@ -7563,21 +7717,21 @@
     {
      "year": 2012,
      "date": "2012-06-01",
-     "title": "ESTIMATED AND ACCURATE SYSTEM RELIABILITIES OF A MAINTAINABLE COMPUTER NETWORK SUBJECT TO MAINTENANCE BUDGET",
-     "authors": "YK LIN, PC CHANG",
-     "venue": "Asia-Pacific Journal of Operational Research",
-     "cites": 2,
-     "doi": "https://doi.org/10.1142/s0217595912400210",
-     "first_seen": ""
-    },
-    {
-     "year": 2012,
-     "date": "2012-06-01",
      "title": "Evaluation of System Reliabilities for a Maintainable Stochastic-Flow Network",
      "authors": "YK Lin, PC Chang",
      "venue": "IEEE Transactions on Reliability",
      "cites": 20,
      "doi": "https://doi.org/10.1109/tr.2012.2196170",
+     "first_seen": ""
+    },
+    {
+     "year": 2012,
+     "date": "2012-06-01",
+     "title": "ESTIMATED AND ACCURATE SYSTEM RELIABILITIES OF A MAINTAINABLE COMPUTER NETWORK SUBJECT TO MAINTENANCE BUDGET",
+     "authors": "YK LIN, PC CHANG",
+     "venue": "Asia-Pacific Journal of Operational Research",
+     "cites": 2,
+     "doi": "https://doi.org/10.1142/s0217595912400210",
      "first_seen": ""
     },
     {
@@ -8119,7 +8273,7 @@
    "name": "黃誠甫 Cheng-Fu Huang",
    "orcid": "0000-0002-9043-4675",
    "stats": {
-    "cites": 1121,
+    "cites": 1127,
     "h": 21,
     "i10": 40,
     "works": 107,
@@ -8742,7 +8896,7 @@
    "name": "黃鼎翔 Ding-Hsiang Huang",
    "orcid": "0000-0002-8278-0287",
    "stats": {
-    "cites": 826,
+    "cites": 828,
     "h": 17,
     "i10": 27,
     "works": 61,
@@ -9235,7 +9389,7 @@
    "name": "牛一峰 Yi-Feng Niu",
    "orcid": "0000-0002-7246-8089",
    "stats": {
-    "cites": 825,
+    "cites": 826,
     "h": 17,
     "i10": 24,
     "works": 48,
@@ -9628,7 +9782,7 @@
    "name": "葉維彰 Wei-Chang Yeh",
    "orcid": "0000-0001-7393-0768",
    "stats": {
-    "cites": 10103,
+    "cites": 10127,
     "h": 55,
     "i10": 195,
     "works": 372,
@@ -10277,16 +10431,6 @@
     },
     {
      "year": 2021,
-     "date": "2021-10-01",
-     "title": "DLEA: A dynamic learning evolution algorithm for many-objective optimization",
-     "authors": "G Li, GG Wang, J Dong, WC Yeh, K Li",
-     "venue": "Information Sciences",
-     "cites": 42,
-     "doi": "https://doi.org/10.1016/j.ins.2021.05.064",
-     "first_seen": "2026-11-14"
-    },
-    {
-     "year": 2021,
      "date": "2021-07-24",
      "title": "Simplified Swarm Optimization for the Heterogeneous Fleet Vehicle Routing Problem with Time-Varying Continuous Speed Function",
      "authors": "WC Yeh, SY Tan",
@@ -10324,6 +10468,16 @@
      "cites": 28,
      "doi": "https://doi.org/10.1016/j.ress.2020.107202",
      "first_seen": ""
+    },
+    {
+     "year": 2020,
+     "date": "2020-11-27",
+     "title": "Using Simplified Swarm Optimization on Multiloop Fuzzy PID Controller Tuning Design for Flow and Temperature Control System",
+     "authors": "TY Wu, YZ Jiang, YZ Su, WC Yeh",
+     "venue": "Applied Sciences",
+     "cites": 28,
+     "doi": "https://doi.org/10.3390/app10238472",
+     "first_seen": "2026-11-24"
     },
     {
      "year": 2020,
@@ -10408,21 +10562,21 @@
     {
      "year": 2019,
      "date": "2019-11-01",
-     "title": "Nurse scheduling problem using Simplified Swarm Optimization",
-     "authors": "WC Yeh, CM Lai, MH Tsai",
-     "venue": "Journal of Physics: Conference Series",
-     "cites": 1,
-     "doi": "https://doi.org/10.1088/1742-6596/1411/1/012010",
-     "first_seen": ""
-    },
-    {
-     "year": 2019,
-     "date": "2019-11-01",
      "title": "Fog computing task scheduling optimization based on multi-objective simplified swarm optimization",
      "authors": "WC Yeh, CM Lai, KC Tseng",
      "venue": "Journal of Physics: Conference Series",
      "cites": 11,
      "doi": "https://doi.org/10.1088/1742-6596/1411/1/012007",
+     "first_seen": ""
+    },
+    {
+     "year": 2019,
+     "date": "2019-11-01",
+     "title": "Nurse scheduling problem using Simplified Swarm Optimization",
+     "authors": "WC Yeh, CM Lai, MH Tsai",
+     "venue": "Journal of Physics: Conference Series",
+     "cites": 1,
+     "doi": "https://doi.org/10.1088/1742-6596/1411/1/012010",
      "first_seen": ""
     },
     {
@@ -10648,21 +10802,21 @@
     {
      "year": 2015,
      "date": "2015-12-01",
-     "title": "A Fast Algorithm for Quickest Path Reliability Evaluations in Multi-State Flow Networks",
-     "authors": "WC Yeh",
-     "venue": "IEEE Transactions on Reliability",
-     "cites": 28,
-     "doi": "https://doi.org/10.1109/tr.2015.2452580",
-     "first_seen": ""
-    },
-    {
-     "year": 2015,
-     "date": "2015-12-01",
      "title": "An Improved Sum-of-Disjoint-Products Technique for Symbolic Multi-State Flow Network Reliability",
      "authors": "WC Yeh",
      "venue": "IEEE Transactions on Reliability",
      "cites": 97,
      "doi": "https://doi.org/10.1109/tr.2015.2452573",
+     "first_seen": ""
+    },
+    {
+     "year": 2015,
+     "date": "2015-12-01",
+     "title": "A Fast Algorithm for Quickest Path Reliability Evaluations in Multi-State Flow Networks",
+     "authors": "WC Yeh",
+     "venue": "IEEE Transactions on Reliability",
+     "cites": 28,
+     "doi": "https://doi.org/10.1109/tr.2015.2452580",
      "first_seen": ""
     },
     {
@@ -11568,21 +11722,21 @@
     {
      "year": 2001,
      "date": "2001-01-01",
-     "title": "An efficient branch-and-bound algorithm for the two-machine bicriteria flowshop scheduling problem",
-     "authors": "WC Yeh",
-     "venue": "Journal of Manufacturing Systems",
-     "cites": 20,
-     "doi": "https://doi.org/10.1016/s0278-6125(01)80034-0",
-     "first_seen": ""
-    },
-    {
-     "year": 2001,
-     "date": "2001-01-01",
      "title": "A simple approach to search for all d-MCs of a limited-flow network",
      "authors": "WC Yeh",
      "venue": "Reliability Engineering & System Safety",
      "cites": 83,
      "doi": "https://doi.org/10.1016/s0951-8320(00)00070-3",
+     "first_seen": ""
+    },
+    {
+     "year": 2001,
+     "date": "2001-01-01",
+     "title": "An efficient branch-and-bound algorithm for the two-machine bicriteria flowshop scheduling problem",
+     "authors": "WC Yeh",
+     "venue": "Journal of Manufacturing Systems",
+     "cites": 20,
+     "doi": "https://doi.org/10.1016/s0278-6125(01)80034-0",
      "first_seen": ""
     },
     {
@@ -12443,7 +12597,7 @@
      "doi": "10.1088/1742-5468/2009/03/p03012",
      "title": "Pedestrian traffic: on the quickest path",
      "year": 2009,
-     "cites": 62,
+     "cites": 63,
      "venue": "Journal of Statistical Mechanics: Theory and Experiment",
      "authors": "Tobias Kretz",
      "group": "application",
