@@ -1,11 +1,11 @@
 {
  "meta": {
-  "updated": "2026-11-24T13:58+08:00",
-  "since": "2026-11-17",
+  "updated": "2026-11-25T12:52+08:00",
+  "since": "2026-11-18",
   "branch": "claude/quirky-faraday-2lk8w8",
-  "new_today": 9,
+  "new_today": 11,
   "summarised": 0,
-  "total": 250
+  "total": 261
  },
  "sources": {
   "tags": [
@@ -201,6 +201,195 @@
   ]
  },
  "feed": [
+  {
+   "doi": "10.1016/j.ress.2026.113951",
+   "url": "https://doi.org/10.1016/j.ress.2026.113951",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "Physics-Informed Deep Learning for Stochastic Degradation Dynamics: A Fokker–Planck Solution-as-Prediction Paradigm",
+   "authors": "Tianxiang Zeng, Jianghong Zhou, Junyu Qi, Yi Qin",
+   "online": "2026-11-25",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "reliability",
+    "simulation"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-25"
+  },
+  {
+   "doi": "10.1016/j.ress.2026.113897",
+   "url": "https://doi.org/10.1016/j.ress.2026.113897",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "Event-log-based early warning of high-stress congestion states in urban rail transit networks: A simulation-based proof of concept",
+   "authors": "Weiyi Long, Kun Jin, Wei Zhou, Wei Wang, Yuqian Ma",
+   "online": "2026-11-25",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "simulation"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-25"
+  },
+  {
+   "doi": "10.1016/j.ress.2026.113943",
+   "url": "https://doi.org/10.1016/j.ress.2026.113943",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "A Hysteresis-Based Adaptive Best Model Selection Algorithm for Reliable Real-Time Fire Prediction Under Multi-Sensor Uncertainty",
+   "authors": "Mujeeb Ali Khan, Abbas Khan, Zeeshan Khan, Mazhar Ali, Abdul Rahim Rasa, Jun Zhang, et al.",
+   "online": "2026-11-25",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "reliability"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-25"
+  },
+  {
+   "doi": "10.1016/j.simpat.2026.103387",
+   "url": "https://doi.org/10.1016/j.simpat.2026.103387",
+   "j": "smpt",
+   "journal": "Simulation Modelling Practice and Theory",
+   "title": "Security and Aging-Aware Scheduling of Bag-of-Tasks under Heterogeneous Arrival Patterns in Hybrid Clouds",
+   "authors": "Helen D. Karatza",
+   "online": "2026-11-24",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "pm"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-25"
+  },
+  {
+   "doi": "10.1016/j.ress.2026.113870",
+   "url": "https://doi.org/10.1016/j.ress.2026.113870",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "Risk-based characteristic neutral temperature for heat speed restrictions on continuous welded rail",
+   "authors": "Tien-Thuy Nguyen",
+   "online": "2026-11-24",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "risk"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-25"
+  },
+  {
+   "doi": "10.1016/j.ress.2026.113896",
+   "url": "https://doi.org/10.1016/j.ress.2026.113896",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "A novel self-supervised learning framework for reliable defect detection in pipeline integrity assessment from magnetic flux leakage signals",
+   "authors": "Xiangkai Shen, Jinhai Liu, Jiange Kou, Lei Li, Zhiguo Yang, Yushan Ma, et al.",
+   "online": "2026-11-24",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "reliability"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-25"
+  },
+  {
+   "doi": "10.1016/j.ress.2026.113884",
+   "url": "https://doi.org/10.1016/j.ress.2026.113884",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "Proactive and human-centered emergency defense strategies for upcoming earthquakes: Enhancing seismic resilience in urban metro systems",
+   "authors": "Taiyi Zhao, Shuai Li, Yan Shi, Zhiguo Sun, Jingquan Wang, Yuchun Tang, et al.",
+   "online": "2026-11-24",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "reliability"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-25"
+  },
+  {
+   "doi": "10.1016/j.ress.2026.113895",
+   "url": "https://doi.org/10.1016/j.ress.2026.113895",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "Reformulating test strategy generation as a projection-based continuous encoding problem: Decoupling variables to improve test performance",
+   "authors": "Zhen Liu, Yuanzhang Su, Ying Wang, Yuexi Xie, Hang Geng, Jingyuan Wang",
+   "online": "2026-11-24",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "pm"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-25"
+  },
+  {
+   "doi": "10.1016/j.ress.2026.113888",
+   "url": "https://doi.org/10.1016/j.ress.2026.113888",
+   "j": "ress",
+   "journal": "Reliability Engineering & System Safety",
+   "title": "A Wiener process degradation model with extended generalized Rayleigh random effects",
+   "authors": "Muhammad Nauman Khan",
+   "online": "2026-11-24",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "reliability"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-25"
+  },
+  {
+   "doi": "10.1016/j.ijpe.2026.110285",
+   "url": "https://doi.org/10.1016/j.ijpe.2026.110285",
+   "j": "ijpe",
+   "journal": "International Journal of Production Economics",
+   "title": "Strategic capacity planning for large language model inference services under demand uncertainty",
+   "authors": "Hengwen Xu, Yichen Wang, Jie Yin, Hao Yin",
+   "online": "2026-11-24",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "agent"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-25"
+  },
+  {
+   "doi": "10.1016/j.cie.2026.112542",
+   "url": "https://doi.org/10.1016/j.cie.2026.112542",
+   "j": "cie",
+   "journal": "Computers & Industrial Engineering",
+   "title": "Energy-efficient scheduling of multi-stage flexible manufacturing systems with integrated predictive maintenance and variable speed control",
+   "authors": "Yibing Li, Xiaokang Feng, Kaipu Wang, Hongtao Tang, Jun Guo, Lei Wang, et al.",
+   "online": "2026-11-24",
+   "published": "2026-11-01",
+   "abstract": "",
+   "tags": [
+    "reliability",
+    "pm"
+   ],
+   "zh": "",
+   "en": "",
+   "added": "2026-11-25"
+  },
   {
    "doi": "10.1016/j.ress.2026.113945",
    "url": "https://doi.org/10.1016/j.ress.2026.113945",
@@ -4524,7 +4713,7 @@
    "name": "林一貴 Yi-Kuei Lin",
    "orcid": "0000-0001-8049-5696",
    "stats": {
-    "cites": 5331,
+    "cites": 5338,
     "h": 36,
     "i10": 150,
     "works": 315,
@@ -6074,21 +6263,21 @@
     {
      "year": 2013,
      "date": "2013-01-01",
-     "title": "Reliability-Based Performance Evaluation for a Stochastic Project Network Under Time and Budget Thresholds",
-     "authors": "YK Lin, PC Chang, SY Li",
-     "venue": "Proceedings of the Institute of Industrial Engineers Asian Conference 2013",
-     "cites": 0,
-     "doi": "https://doi.org/10.1007/978-981-4451-98-7_30",
-     "first_seen": ""
-    },
-    {
-     "year": 2013,
-     "date": "2013-01-01",
      "title": "System Reliability and Decision Making for a Production System with Intersectional Lines",
      "authors": "YK Lin, PC Chang, KJ Hsueh",
      "venue": "Proceedings of the Institute of Industrial Engineers Asian Conference 2013",
      "cites": 0,
      "doi": "https://doi.org/10.1007/978-981-4451-98-7_31",
+     "first_seen": ""
+    },
+    {
+     "year": 2013,
+     "date": "2013-01-01",
+     "title": "Reliability-Based Performance Evaluation for a Stochastic Project Network Under Time and Budget Thresholds",
+     "authors": "YK Lin, PC Chang, SY Li",
+     "venue": "Proceedings of the Institute of Industrial Engineers Asian Conference 2013",
+     "cites": 0,
+     "doi": "https://doi.org/10.1007/978-981-4451-98-7_30",
      "first_seen": ""
     },
     {
@@ -6504,21 +6693,21 @@
     {
      "year": 2010,
      "date": "2010-12-01",
-     "title": "New challenges and opportunities in flexible and robust supply chain forecasting systems",
-     "authors": "PC Chang, YK Lin",
-     "venue": "International Journal of Production Economics",
-     "cites": 6,
-     "doi": "https://doi.org/10.1016/j.ijpe.2010.08.012",
-     "first_seen": ""
-    },
-    {
-     "year": 2010,
-     "date": "2010-12-01",
      "title": "Optimal carrier selection based on network reliability criterion for stochastic logistics networks",
      "authors": "YK Lin, CT Yeh",
      "venue": "International Journal of Production Economics",
      "cites": 32,
      "doi": "https://doi.org/10.1016/j.ijpe.2010.07.001",
+     "first_seen": ""
+    },
+    {
+     "year": 2010,
+     "date": "2010-12-01",
+     "title": "New challenges and opportunities in flexible and robust supply chain forecasting systems",
+     "authors": "PC Chang, YK Lin",
+     "venue": "International Journal of Production Economics",
+     "cites": 6,
+     "doi": "https://doi.org/10.1016/j.ijpe.2010.08.012",
      "first_seen": ""
     },
     {
@@ -7097,7 +7286,7 @@
    "name": "張秉宸 Ping-Chen Chang",
    "orcid": "0000-0001-5563-2580",
    "stats": {
-    "cites": 1403,
+    "cites": 1405,
     "h": 23,
     "i10": 45,
     "works": 106,
@@ -7313,6 +7502,16 @@
      "cites": 22,
      "doi": "https://doi.org/10.1016/j.simpat.2020.102192",
      "first_seen": ""
+    },
+    {
+     "year": 2020,
+     "date": "2020-08-01",
+     "title": "Methodology for Integrating Conventional and Network Reliability Evaluation",
+     "authors": "CH Huang, PC Chang, YK Lin",
+     "venue": "2020 Asia-Pacific International Symposium on Advanced Reliability and Maintenance Modeling (APARM)",
+     "cites": 0,
+     "doi": "https://doi.org/10.1109/aparm49247.2020.9209386",
+     "first_seen": "2026-11-25"
     },
     {
      "year": 2019,
@@ -7577,21 +7776,21 @@
     {
      "year": 2013,
      "date": "2013-03-01",
-     "title": "Graphical-based reliability evaluation of multiple distinct production lines",
-     "authors": "YK Lin, PC Chang",
-     "venue": "Journal of Systems Science and Systems Engineering",
-     "cites": 3,
-     "doi": "https://doi.org/10.1007/s11518-013-5208-7",
-     "first_seen": ""
-    },
-    {
-     "year": 2013,
-     "date": "2013-03-01",
      "title": "A Novel Reliability Evaluation Technique for Stochastic-Flow Manufacturing Networks With Multiple Production Lines",
      "authors": "YK Lin, PC Chang",
      "venue": "IEEE Transactions on Reliability",
      "cites": 43,
      "doi": "https://doi.org/10.1109/tr.2012.2220898",
+     "first_seen": ""
+    },
+    {
+     "year": 2013,
+     "date": "2013-03-01",
+     "title": "Graphical-based reliability evaluation of multiple distinct production lines",
+     "authors": "YK Lin, PC Chang",
+     "venue": "Journal of Systems Science and Systems Engineering",
+     "cites": 3,
+     "doi": "https://doi.org/10.1007/s11518-013-5208-7",
      "first_seen": ""
     },
     {
@@ -7717,21 +7916,21 @@
     {
      "year": 2012,
      "date": "2012-06-01",
-     "title": "Evaluation of System Reliabilities for a Maintainable Stochastic-Flow Network",
-     "authors": "YK Lin, PC Chang",
-     "venue": "IEEE Transactions on Reliability",
-     "cites": 20,
-     "doi": "https://doi.org/10.1109/tr.2012.2196170",
-     "first_seen": ""
-    },
-    {
-     "year": 2012,
-     "date": "2012-06-01",
      "title": "ESTIMATED AND ACCURATE SYSTEM RELIABILITIES OF A MAINTAINABLE COMPUTER NETWORK SUBJECT TO MAINTENANCE BUDGET",
      "authors": "YK LIN, PC CHANG",
      "venue": "Asia-Pacific Journal of Operational Research",
      "cites": 2,
      "doi": "https://doi.org/10.1142/s0217595912400210",
+     "first_seen": ""
+    },
+    {
+     "year": 2012,
+     "date": "2012-06-01",
+     "title": "Evaluation of System Reliabilities for a Maintainable Stochastic-Flow Network",
+     "authors": "YK Lin, PC Chang",
+     "venue": "IEEE Transactions on Reliability",
+     "cites": 20,
+     "doi": "https://doi.org/10.1109/tr.2012.2196170",
      "first_seen": ""
     },
     {
@@ -7810,7 +8009,7 @@
    "name": "葉承達 Cheng-Ta Yeh",
    "orcid": "0000-0003-1916-6564",
    "stats": {
-    "cites": 858,
+    "cites": 859,
     "h": 19,
     "i10": 25,
     "works": 43,
@@ -8273,8 +8472,8 @@
    "name": "黃誠甫 Cheng-Fu Huang",
    "orcid": "0000-0002-9043-4675",
    "stats": {
-    "cites": 1127,
-    "h": 21,
+    "cites": 1149,
+    "h": 22,
     "i10": 40,
     "works": 107,
     "source": "OpenAlex"
@@ -8896,7 +9095,7 @@
    "name": "黃鼎翔 Ding-Hsiang Huang",
    "orcid": "0000-0002-8278-0287",
    "stats": {
-    "cites": 828,
+    "cites": 829,
     "h": 17,
     "i10": 27,
     "works": 61,
@@ -8906,22 +9105,22 @@
     {
      "year": 2027,
      "date": "2027-01-01",
-     "title": "Surrogate-assisted priority ordering optimization for joint reliability in multi-state flow networks",
-     "authors": "DH Huang",
-     "venue": "Engineering Applications of Artificial Intelligence",
-     "cites": 0,
-     "doi": "https://doi.org/10.1016/j.engappai.2026.116689",
-     "first_seen": "2026-11-19"
-    },
-    {
-     "year": 2027,
-     "date": "2027-01-01",
      "title": "A stochastic approach to evaluating global supply chain reliability under tariff and carbon emission considerations",
      "authors": "DH Huang",
      "venue": "Reliability Engineering & System Safety",
      "cites": 2,
      "doi": "https://doi.org/10.1016/j.ress.2026.113121",
      "first_seen": ""
+    },
+    {
+     "year": 2027,
+     "date": "2027-01-01",
+     "title": "Surrogate-assisted priority ordering optimization for joint reliability in multi-state flow networks",
+     "authors": "DH Huang",
+     "venue": "Engineering Applications of Artificial Intelligence",
+     "cites": 0,
+     "doi": "https://doi.org/10.1016/j.engappai.2026.116689",
+     "first_seen": "2026-11-19"
     },
     {
      "year": 2027,
@@ -9782,7 +9981,7 @@
    "name": "葉維彰 Wei-Chang Yeh",
    "orcid": "0000-0001-7393-0768",
    "stats": {
-    "cites": 10127,
+    "cites": 10149,
     "h": 55,
     "i10": 195,
     "works": 372,
@@ -10145,7 +10344,7 @@
      "title": "Machine learning based approach for exploring online shopping behavior and preferences with eye tracking",
      "authors": "Z Liu, WC Yeh, KY Lin, CS Lin, CY Chang",
      "venue": "Computer Science and Information Systems",
-     "cites": 8,
+     "cites": 9,
      "doi": "https://doi.org/10.2298/csis230807077l",
      "first_seen": ""
     },
@@ -10205,7 +10404,7 @@
      "title": "Novel recursive inclusion-exclusion technology based on BAT and MPs for heterogeneous-arc binary-state network reliability problems",
      "authors": "WC Yeh",
      "venue": "Reliability Engineering & System Safety",
-     "cites": 25,
+     "cites": 26,
      "doi": "https://doi.org/10.1016/j.ress.2022.108994",
      "first_seen": ""
     },
@@ -10415,7 +10614,7 @@
      "title": "The Vehicle Routing Problem: State-of-the-Art Classification and Review",
      "authors": "SY Tan, WC Yeh",
      "venue": "Applied Sciences",
-     "cites": 100,
+     "cites": 101,
      "doi": "https://doi.org/10.3390/app112110295",
      "first_seen": ""
     },
@@ -10562,21 +10761,21 @@
     {
      "year": 2019,
      "date": "2019-11-01",
-     "title": "Fog computing task scheduling optimization based on multi-objective simplified swarm optimization",
-     "authors": "WC Yeh, CM Lai, KC Tseng",
-     "venue": "Journal of Physics: Conference Series",
-     "cites": 11,
-     "doi": "https://doi.org/10.1088/1742-6596/1411/1/012007",
-     "first_seen": ""
-    },
-    {
-     "year": 2019,
-     "date": "2019-11-01",
      "title": "Nurse scheduling problem using Simplified Swarm Optimization",
      "authors": "WC Yeh, CM Lai, MH Tsai",
      "venue": "Journal of Physics: Conference Series",
      "cites": 1,
      "doi": "https://doi.org/10.1088/1742-6596/1411/1/012010",
+     "first_seen": ""
+    },
+    {
+     "year": 2019,
+     "date": "2019-11-01",
+     "title": "Fog computing task scheduling optimization based on multi-objective simplified swarm optimization",
+     "authors": "WC Yeh, CM Lai, KC Tseng",
+     "venue": "Journal of Physics: Conference Series",
+     "cites": 11,
+     "doi": "https://doi.org/10.1088/1742-6596/1411/1/012007",
      "first_seen": ""
     },
     {
@@ -10802,21 +11001,21 @@
     {
      "year": 2015,
      "date": "2015-12-01",
-     "title": "An Improved Sum-of-Disjoint-Products Technique for Symbolic Multi-State Flow Network Reliability",
-     "authors": "WC Yeh",
-     "venue": "IEEE Transactions on Reliability",
-     "cites": 97,
-     "doi": "https://doi.org/10.1109/tr.2015.2452573",
-     "first_seen": ""
-    },
-    {
-     "year": 2015,
-     "date": "2015-12-01",
      "title": "A Fast Algorithm for Quickest Path Reliability Evaluations in Multi-State Flow Networks",
      "authors": "WC Yeh",
      "venue": "IEEE Transactions on Reliability",
      "cites": 28,
      "doi": "https://doi.org/10.1109/tr.2015.2452580",
+     "first_seen": ""
+    },
+    {
+     "year": 2015,
+     "date": "2015-12-01",
+     "title": "An Improved Sum-of-Disjoint-Products Technique for Symbolic Multi-State Flow Network Reliability",
+     "authors": "WC Yeh",
+     "venue": "IEEE Transactions on Reliability",
+     "cites": 97,
+     "doi": "https://doi.org/10.1109/tr.2015.2452573",
      "first_seen": ""
     },
     {
@@ -11012,21 +11211,21 @@
     {
      "year": 2013,
      "date": "2013-09-01",
-     "title": "Evaluating the reliability of a novel deterioration-effect multi-state flow network",
-     "authors": "WC Yeh",
-     "venue": "Information Sciences",
-     "cites": 26,
-     "doi": "https://doi.org/10.1016/j.ins.2013.02.016",
-     "first_seen": ""
-    },
-    {
-     "year": 2013,
-     "date": "2013-09-01",
      "title": "A Novel Cut-Based Universal Generating Function Method",
      "authors": "WC Yeh",
      "venue": "IEEE Transactions on Reliability",
      "cites": 14,
      "doi": "https://doi.org/10.1109/tr.2013.2273038",
+     "first_seen": ""
+    },
+    {
+     "year": 2013,
+     "date": "2013-09-01",
+     "title": "Evaluating the reliability of a novel deterioration-effect multi-state flow network",
+     "authors": "WC Yeh",
+     "venue": "Information Sciences",
+     "cites": 26,
+     "doi": "https://doi.org/10.1016/j.ins.2013.02.016",
      "first_seen": ""
     },
     {
@@ -11268,16 +11467,6 @@
      "cites": 324,
      "doi": "https://doi.org/10.1016/j.asoc.2010.09.007",
      "first_seen": ""
-    },
-    {
-     "year": 2011,
-     "date": "2011-01-01",
-     "title": "Simplified Swarm Optimization for Life Log Data Mining",
-     "authors": "C Bae, WC Yeh, YY Chung",
-     "venue": "Lecture Notes in Electrical Engineering IT Convergence and Services",
-     "cites": 2,
-     "doi": "https://doi.org/10.1007/978-94-007-2598-0_62",
-     "first_seen": "2026-11-21"
     },
     {
      "year": 2011,
@@ -11722,21 +11911,21 @@
     {
      "year": 2001,
      "date": "2001-01-01",
-     "title": "A simple approach to search for all d-MCs of a limited-flow network",
-     "authors": "WC Yeh",
-     "venue": "Reliability Engineering & System Safety",
-     "cites": 83,
-     "doi": "https://doi.org/10.1016/s0951-8320(00)00070-3",
-     "first_seen": ""
-    },
-    {
-     "year": 2001,
-     "date": "2001-01-01",
      "title": "An efficient branch-and-bound algorithm for the two-machine bicriteria flowshop scheduling problem",
      "authors": "WC Yeh",
      "venue": "Journal of Manufacturing Systems",
      "cites": 20,
      "doi": "https://doi.org/10.1016/s0278-6125(01)80034-0",
+     "first_seen": ""
+    },
+    {
+     "year": 2001,
+     "date": "2001-01-01",
+     "title": "A simple approach to search for all d-MCs of a limited-flow network",
+     "authors": "WC Yeh",
+     "venue": "Reliability Engineering & System Safety",
+     "cites": 83,
+     "doi": "https://doi.org/10.1016/s0951-8320(00)00070-3",
      "first_seen": ""
     },
     {
